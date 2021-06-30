@@ -1,0 +1,15 @@
+<mat-toolbar>
+    <span>Confirmar</span>
+    <span class="spacer"></span>
+    <button mat-icon-button [mat-dialog-close]="false">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-toolbar>
+<div mat-dialog-content>
+    <br>
+    <p>¿{{mensaje}} <strong>{{data}}</strong>?</p>
+</div>
+<div mat-dialog-actions align="center">
+    <button mat-button [mat-dialog-close]="false" tabindex="-1">No</button>
+    <button mat-raised-button [mat-dialog-close]="true" tabindex="2" color="primary">Si</button>
+</div>

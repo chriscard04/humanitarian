@@ -1,0 +1,29 @@
+.mat-menu-panel.user-menu {
+  max-width: none !important;
+}
+
+
+.user-menu {
+
+  .mat-toolbar,
+  .mat-toolbar-row {
+    height: 100px !important;
+    width: auto;
+  }
+
+  .user-info {
+    width: auto;
+    p {
+      margin-left: 15px;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center;
+      color: white !important;
+    }
+  }
+
+  .mat-menu-item {
+    height: 36px;
+    line-height: 36px;
+  }
+}

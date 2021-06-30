@@ -1,0 +1,147 @@
+<mat-drawer-container class="example-container" hasBackdrop="false">
+    <mat-drawer #drawerActivities mode="side" position="end" style="padding-left: 15px; margin-right: 15px;">
+        <mat-card>
+            <mat-toolbar>
+
+                <span>Beneficiary Activities</span>
+                <span class="spacer"></span>
+                <button mat-icon-button (click)="closeDrawerActivities()">
+                    <mat-icon>close</mat-icon>
+                </button>
+
+            </mat-toolbar>
+            <div>
+                <br>
+                <h3>
+                    Activities Information
+                </h3>
+                <p>
+                    Beneficiary ID:
+                </p>
+                <p>
+                    Name:
+
+                </p>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <mat-list>
+                <div mat-subheader>Activities</div>
+                <mat-list-item *ngFor="let activity of drawer_activities">
+                    <mat-icon mat-list-icon>fact_check</mat-icon>
+                    <div mat-line style="max-width: 250px;">{{activity.info_activity_title}}</div>
+                    <div mat-line> Event Date: {{activity.info_event_date | date}} </div>
+                    <div mat-line> Asistance: {{activity.list_beneficiaries.length + 1 }} </div>
+                </mat-list-item>
+            </mat-list>
+
+
+        </mat-card>
+
+    </mat-drawer>
+    <mat-drawer-content #draweContent>
+        <div fxLayout="column">
+            <div class="flex-p">
+
+                <div fxLayout="column" class="mat-elevation-z8 p-20 pb-0">
+                    <div fxLayout="column" style="margin-top: 10px; margin-bottom: 10px">
+                        <div><strong>Total Datasets:</strong> {{ total_datasets }}
+                            <!--  | Possible duplicates: <b
+                        style="color: crimson;">{{ count_possibles }}</b> -->
+                        </div>
+                        <hr style="width:100%" />
+                        <div> </div>
+                        <div> </div>
+                        <br>
+                    </div>
+                    <div fxLayout="row">
+
+                        <button fxFlex="10" mat-icon-button style="margin-right: 30px;" class="mt-5" (click)="import()"
+                            [disabled]="showLoading">
+                            <mat-icon>library_add</mat-icon>
+                            Import
+                        </button>
+                        <button fxFlex="5" mat-icon-button class="mt-5">
+                            <mat-icon>search</mat-icon>
+                        </button>
+                        <div fxFlex="85" class="ml-5">
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="Buscar..." (keyup)="filterDatatable($event)">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxFlex="100" class="message" *ngIf="message.show">
+                        <mat-card [class.bg-primary]="message.status=='primary'"
+                            [class.bg-accent]="message.status=='accent'" [class.bg-warn]="message.status=='warn'">
+                            {{message.text}}
+                        </mat-card>
+                        <br><!--  -->
+                    </div>
+                </div>
+
+                <!-- <mat-progress-bar mode="buffer" style="width: 100%; margin: 15px; height: 5px;" *ngIf="showLoading"></mat-progress-bar> -->
+                <ngx-datatable #table class="material" [headerHeight]="80" [limit]="10" [columnMode]="'force'"
+                    [footerHeight]="50" [rowHeight]="45" [rows]="data" [loadingIndicator]="showLoading"
+                    [scrollbarH]="true" [selected]="rowSelected" (select)='onSelect($event)' selectionType="multi">
+                    <ngx-datatable-column [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="true"
+                        [resizeable]="false" [headerCheckboxable]="false" [checkboxable]="true">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Dataset ID" prop="id">
+                        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                            <p (dblclick)="update(row)" class="w-100 pointer">{{value}}</p>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Name" prop="name" width="250">
+                        <ng-template let-column="column" ngx-datatable-header-template>
+                            <div style="margin-left: 3px;">Name</div>
+                            <mat-form-field style="width: 90%; margin-left: 0px;" appearance="fill">
+                                <mat-icon matPrefix>filter_alt</mat-icon>
+                                <input matInput type="text" [(ngModel)]="filterName"
+                                    (keyup)="filterByColumn($event, 'name')">
+                                <button mat-button *ngIf="filterName" matSuffix mat-icon-button
+                                    placeholder="Name Filter" (click)="filterName=''; filterByColumn($event, 'name')">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </ng-template>
+                        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                            <p (dblclick)="update(row)" class="w-100 pointer">{{value}}</p>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Description" prop="description" width="250">
+                        <ng-template let-column="column" ngx-datatable-header-template>
+                            <div style="margin-left: 3px;">Description</div>
+                            <mat-form-field style="width: 90%; margin-left: 0px;" appearance="fill">
+                                <mat-icon matPrefix>filter_alt</mat-icon>
+                                <input matInput type="text" [(ngModel)]="filterDescription"
+                                    (keyup)="filterByColumn($event, 'description')">
+                                <button mat-button *ngIf="filterDescription" matSuffix mat-icon-button
+                                    placeholder="Name Filter"
+                                    (click)="filterDescription=''; filterByColumn($event, 'description')">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </ng-template>
+                        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                            <p (dblclick)="update(row)" class="w-100 pointer">{{value}}</p>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Total of beneficiaries" prop="total">
+                        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                            <p (dblclick)="update(row)" class="w-100 pointer">{{value}}</p>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column [width]="200" name="Actions" frozenRight="True">
+                        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+                            <span class="spacer"></span>
+                            <button class="mat-small" mat-raised-button color="primary"
+                                (click)="openDrawerActivities(row)"> Show Activities</button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

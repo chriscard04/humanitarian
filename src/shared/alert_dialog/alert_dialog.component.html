@@ -1,0 +1,14 @@
+<mat-toolbar>
+    <span>{{title}}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button [mat-dialog-close]="false">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-toolbar>
+<div mat-dialog-content>
+    <br>
+    <p>{{data}}</p>
+</div>
+<div mat-dialog-actions align="center">
+    <button mat-raised-button [mat-dialog-close]="null" tabindex="2" color="primary">Aceptar</button>
+</div>

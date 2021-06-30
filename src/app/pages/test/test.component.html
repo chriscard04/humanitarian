@@ -1,0 +1,58 @@
+<div fxLayout="column">
+    <div class="flex-p">
+        <h3>
+            Row Grouping
+        </h3>
+        <ngx-datatable #myTable class="material expandable" [rows]="rows" [groupRowsBy]="'group_id'"
+            [columnMode]="ColumnMode.force" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50" [rowHeight]="40"
+            [limit]="4" [groupExpansionDefault]="true">
+            <!-- Group Header Template -->
+            <ngx-datatable-group-header [rowHeight]="50" #myGroupHeader (toggle)="onDetailToggle($event)">
+                <ng-template let-group="group" let-expanded="expanded" ngx-datatable-group-header-template>
+                    <div style="padding-left:5px;" (click)="toggleExpandGroup(group)">
+                        <span [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded"
+                            title="Expand/Collapse Group">
+                            <b>Name: {{ group.value[0].ben_first_name }} &nbsp; {{group.value[0].ben_last_name1}}</b>
+                        </span>
+                    </div>
+                </ng-template>
+            </ngx-datatable-group-header>
+
+            <!-- Row Column Template -->
+            <ngx-datatable-column name="Exp. Pay." prop="" editable="true" frozenLeft="True">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row"
+                    let-group="group">
+                    <label for="ep1{{ rowIndex }}" class="datatable-checkbox">
+                        <input type="checkbox" id="ep1{{ rowIndex }}" name="{{ rowIndex }}" value="0"
+                            class="expectedpayment" (change)="checkGroup($event, row, rowIndex, group)"
+                            [checked]="row.exppayyes === 1" />
+                    </label>
+                    <label for="ep2{{ rowIndex }}" class="datatable-checkbox">
+                        <input type="checkbox" id="ep2{{ rowIndex }}" name="{{ rowIndex }}" value="1"
+                            class="expectedpayment2" (change)="checkGroup($event, row, rowIndex, group)"
+                            [checked]="row.exppayno === 1" />
+                    </label>
+                    <label for="ep3{{ rowIndex }}" class="datatable-checkbox">
+                        <input type="checkbox" id="ep3{{ rowIndex }}" name="{{ rowIndex }}" value="2"
+                            class="expectedpayment3" (change)="checkGroup($event, row, rowIndex, group)"
+                            [checked]="row.exppaypending === 1" />
+                    </label>
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="First Name" prop="ben_first_name" editable="false">
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Last Name" prop="ben_last_name1" editable="true" frozenLeft="True">
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Gender" prop="ben_sex"></ngx-datatable-column>
+            <ngx-datatable-column name="Age" prop="age"></ngx-datatable-column>
+            <ngx-datatable-column name="Last Name 2" prop="ben_last_name2">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row"
+                    let-group="group" let-rowHeight="rowHeight">
+                    <input autofocus (blur)="updateValue($event, 'comment', rowIndex)" type="text" name="comment"
+                        [value]="value" />
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</div>

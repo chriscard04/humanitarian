@@ -1,0 +1,364 @@
+[{
+    "exppayyes": 1,
+    "exppayno": 0,
+    "exppaypending": 0,
+    "source": "Funder",
+    "name": "Ethel Price",
+    "gender": "female",
+    "company": "Johnson, Johnson and Partners, LLC CMP DDC",
+    "age": 22,
+    "comment": "test1",
+    "groupcomment": "group comment test  with multiple lines of text. group comment test  with multiple lines of text."
+  },
+  {
+    "exppayyes": 0,
+    "exppayno": 1,
+    "exppaypending": 0,
+    "source": "Calculated",
+    "name": "Wilder Gonzales",
+    "gender": "male",
+    "company": "Geekko",
+    "age": 22,
+    "comment": "test2",
+    "groupcomment": "group comment test  with multiple lines of text. group comment test  with multiple lines of text."
+  },
+  {
+    "exppayyes": 0,
+    "exppayno": 0,
+    "exppaypending": 1,
+    "source": "Manual",
+    "name": "Georgina Schultz",
+    "gender": "female",
+    "company": "Suretech",
+    "age": 22,
+    "comment": "test3",
+    "groupcomment": "group comment test  with multiple lines of text. group comment test  with multiple lines of text."
+  },
+  {
+    "exppayyes": 0,
+    "exppayno": 0,
+    "exppaypending": 0,
+    "source": "Manual",
+    "name": "Carroll Buchanan",
+    "gender": "male",
+    "company": "Ecosys",
+    "age": 22,
+    "comment": "test4",
+    "groupcomment": "group comment test  with multiple lines of text. group comment test  with multiple lines of text."
+  },
+  {
+    "exppayyes": 0,
+    "exppayno": 0,
+    "exppaypending": 0,
+    "source": "Funder",
+    "name": "Claudine Neal",
+    "startdate": "01/01/2017",
+    "enddate": "14/01/2017",
+    "gender": "female",
+    "company": "Sealoud",
+    "age": 55,
+    "groupcomment": "group comment test 2",
+    "groupstatus": ""
+  },
+  {
+    "name": "Beryl Rice",
+    "gender": "female",
+    "company": "Velity",
+    "age": 67
+  },
+  {
+    "exppayyes": 0,
+    "exppayno": 0,
+    "exppaypending": 0,
+    "source": "Calculated",
+    "name": "Valarie Atkinson",
+    "startdate": "01/01/2017",
+    "enddate": "14/01/2017",
+    "gender": "female",
+    "company": "Hopeli",
+    "age": 55,
+    "groupcomment": "group comment test 2",
+    "groupstatus": ""
+  },
+  {
+    "name": "Schroeder Mathews",
+    "gender": "male",
+    "company": "Polarium",
+    "age": 67
+  },
+  {
+    "name": "Lynda Mendoza",
+    "gender": "female",
+    "company": "Dogspa",
+    "age": 10
+  },
+  {
+    "name": "Sarah Massey",
+    "gender": "female",
+    "company": "Bisba",
+    "age": 10
+  },
+  {
+    "name": "Robles Boyle",
+    "gender": "male",
+    "company": "Comtract",
+    "age": 11
+  },
+  {
+    "name": "Evans Hickman",
+    "gender": "male",
+    "company": "Parleynet",
+    "age": 11
+  },
+  {
+    "name": "Robles Boyle",
+    "gender": "male",
+    "company": "Comtract",
+    "age": 50
+  },
+  {
+    "name": "Evans Hickman",
+    "gender": "male",
+    "company": "Parleynet",
+    "age": 50
+  },
+  {
+    "name": "Robles Boyle",
+    "gender": "male",
+    "company": "Comtract",
+    "age": 51
+  },
+  {
+    "name": "Evans Hickman",
+    "gender": "male",
+    "company": "Parleynet",
+    "age": 51
+  },
+  {
+    "name": "Robles Boyle",
+    "gender": "male",
+    "company": "Comtract",
+    "age": 52,
+    "groupcomment": "group comment test  with multiple lines of text. group comment test  with multiple lines of text."
+  },
+  {
+    "name": "Evans Hickman",
+    "gender": "male",
+    "company": "Parleynet",
+    "age": 52,
+    "groupcomment": "group comment test  with multiple lines of text. group comment test  with multiple lines of text."
+  },
+  {
+    "name": "Dawson Barber",
+    "gender": "male",
+    "company": "Dymi",
+    "age": 12,
+    "groupcomment": "group comment test  with multiple lines of text. group comment test  with multiple lines of text."
+  },
+  {
+    "name": "Robles Boyle",
+    "gender": "male",
+    "company": "Comtract",
+    "age": 53,
+    "groupcomment": "group comment test  with multiple lines of text."
+  },
+  {
+    "name": "Evans Hickman",
+    "gender": "male",
+    "company": "Parleynet",
+    "age": 53,
+    "groupcomment": "group comment test  with multiple lines of text."
+  },
+  {
+    "name": "Robles Boyle",
+    "gender": "male",
+    "company": "Comtract",
+    "age": 54
+  },
+  {
+    "name": "Evans Hickman",
+    "gender": "male",
+    "company": "Parleynet",
+    "age": 54
+  },
+  {
+    "name": "Robles Boyle",
+    "gender": "male",
+    "company": "Comtract",
+    "age": 56
+  },
+  {
+    "name": "Evans Hickman",
+    "gender": "male",
+    "company": "Parleynet",
+    "age": 56
+  },
+  {
+    "name": "Bruce Strong",
+    "gender": "male",
+    "company": "Xyqag",
+    "age": 12
+  },
+  {
+    "name": "No Group1",
+    "gender": "male",
+    "company": "Xyqag",
+    "age": null
+  },
+  {
+    "name": "No Group2",
+    "gender": "male",
+    "company": "Xyqag",
+    "age": null
+  },
+  {
+    "name": "No Group3",
+    "gender": "male",
+    "company": "Xyqag",
+    "age": null
+  },
+  {
+    "name": "No Group4",
+    "gender": "male",
+    "company": "Xyqag",
+    "age": null
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  {
+    "duplicated_level": 1,
+    "_id": "603367de215fcd224c8b65eb",
+    "published_at": "2021-02-22T08:14:22.204Z",
+    "ben_beneficiary_type": "Voluntario",
+    "ben_country": "El Salvador",
+    "ben_sex": "Femenino",
+    "ben_birthday": "1969-10-28",
+    "ben_last_name2": "",
+    "ben_last_name1": "RAMÍREZ",
+    "ben_middle_name": "DEL CARMEN",
+    "ben_first_name": "SONIA",
+    "ben_DNI": "1114-02",
+    "ben_ID": "28",
+    "createdAt": "2021-02-22T08:14:22.209Z",
+    "updatedAt": "2021-03-13T06:49:23.223Z",
+    "__v": 0,
+    "info_activity_assitance": [
+      "603367dd215fcd224c8b65e8",
+      "603367de215fcd224c8b65ec"
+    ],
+    "ben_community": "SOCIEDAD NACIONAL",
+    "group_id": "603367de215fcd224c8b65eb",
+    "suggested_duplicates": [{
+        "id": "6033fc5ec7da4a1b40baa38d",
+        "avg_dist": 0.9686666666666667,
+        "fn_dist": 1,
+        "mn_dist": 1,
+        "ln1_dist": 0.9333333333333333,
+        "ln2_dist": 1,
+        "cm_dist": 1,
+        "bd_dist": 0.9533333333333333,
+        "_from": "603367de215fcd224c8b65eb"
+      },
+      {
+        "id": "6033fda2c7da4a1b40baa6ad",
+        "avg_dist": 0.9733333333333333,
+        "fn_dist": 1,
+        "mn_dist": 1,
+        "ln1_dist": 0.9333333333333333,
+        "ln2_dist": 1,
+        "cm_dist": 1,
+        "bd_dist": 1,
+        "_from": "603367de215fcd224c8b65eb"
+      }
+    ],
+    "id": "603367de215fcd224c8b65eb"
+  },
+  {
+    "duplicated_level": 2,
+    "_id": "6033fc5ec7da4a1b40baa38d",
+    "published_at": "2021-02-22T18:47:58.409Z",
+    "ben_beneficiary_type": "Voluntario",
+    "ben_country": "El Salvador",
+    "ben_sex": "Femenino",
+    "ben_birthday": "1968-10-28",
+    "ben_last_name2": "",
+    "ben_last_name1": "RAMIREZ",
+    "ben_middle_name": "DEL CARMEN",
+    "ben_first_name": "SONIA",
+    "ben_DNI": "1114-2",
+    "ben_ID": "100",
+    "createdAt": "2021-02-22T18:47:58.413Z",
+    "updatedAt": "2021-03-13T06:50:13.386Z",
+    "__v": 0,
+    "info_activity_assitance": [
+      "603367e0215fcd224c8b65f1"
+    ],
+    "ben_community": "SOCIEDAD NACIONAL",
+    "group_id": "603367de215fcd224c8b65eb",
+    "suggested_duplicates": [{
+      "id": "6033fda2c7da4a1b40baa6ad",
+      "avg_dist": 0.9953333333333333,
+      "fn_dist": 1,
+      "mn_dist": 1,
+      "ln1_dist": 1,
+      "ln2_dist": 1,
+      "cm_dist": 1,
+      "bd_dist": 0.9533333333333333,
+      "_from": "6033fc5ec7da4a1b40baa38d"
+    }],
+    "id": "6033fc5ec7da4a1b40baa38d"
+  },
+
+  {
+    "duplicated_level": 2,
+    "_id": "6033fda2c7da4a1b40baa6ad",
+    "published_at": "2021-02-22T18:53:22.700Z",
+    "ben_beneficiary_type": "Voluntario",
+    "ben_country": "El Salvador",
+    "ben_sex": "Femenino",
+    "ben_birthday": "1969-10-28",
+    "ben_last_name2": "",
+    "ben_last_name1": "RAMIREZ",
+    "ben_middle_name": "DEL CARMEN",
+    "ben_first_name": "SONIA",
+    "ben_DNI": "02572734-2",
+    "ben_ID": "903",
+    "createdAt": "2021-02-22T18:53:22.704Z",
+    "updatedAt": "2021-03-13T06:50:13.456Z",
+    "__v": 0,
+    "info_activity_assitance": [
+      "603367e1215fcd224c8b65f4",
+      "603367e3215fcd224c8b65f8",
+      "603367e3215fcd224c8b65f9"
+    ],
+    "ben_community": "SOCIEDAD NACIONAL",
+    "group_id": "6033fc5ec7da4a1b40baa38d",
+    "id": "6033fda2c7da4a1b40baa6ad"
+  }
+
+
+
+
+
+
+
+
+
+
+]

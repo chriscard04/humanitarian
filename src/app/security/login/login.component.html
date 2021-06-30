@@ -1,0 +1,49 @@
+<mat-sidenav-container>
+
+    <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxFlex="80" fxFlex.gt-sm="30" fxFlex.sm="60">
+
+            <mat-card class="p-0 mat-elevation-z24 box">
+                <div fxLayout="column" fxLayoutAlign="center center" class="bg-primary box-header">
+                    <div class="center">
+                        <img mat-icon-button src="../../assets/ChepoLifeLogo10.png" style="height: 10vh;">
+                    </div>
+                    <h1>Data Quality Management</h1>
+                </div>
+
+                <mat-card-content fxLayout="column" fxLayoutAlign="end center" class="box-content">
+                    <mat-card fxLayout="column" fxLayoutAlign="center center"
+                        class="mat-elevation-z12 box-content-inner">
+                        <mat-form-field class="w-100">
+                            <input matInput placeholder="Email" formControlName="username">
+                            <mat-error *ngIf="form.controls.username.errors?.required">ID Requiered
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.username.hasError('invalidEmail')">Invalid Email
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="w-100">
+                            <input matInput placeholder="Password" formControlName="password" type="password">
+                            <mat-error *ngIf="form.controls.password.errors?.required">Passwoed Requiered
+                            </mat-error>
+                            <!--<mat-error *ngIf="form.controls.password.hasError('minlength')">Password isn't long
+                            enough, minimum of 6 characters</mat-error>-->
+                        </mat-form-field>
+
+                        <div class="w-100 recover-password">
+                            <a routerLink="/recover_password">
+                                ¿SE TE OLVIDÓ TU CONTRASEÑA?
+                            </a>
+                        </div>
+                    </mat-card>
+                    <button mat-raised-button color="primary" class="mat-elevation-z12 box-button" type="submit">
+                        Log In
+                    </button>
+                </mat-card-content>
+            </mat-card>
+
+        </form>
+
+    </div>
+
+</mat-sidenav-container>

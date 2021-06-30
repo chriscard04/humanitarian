@@ -1,0 +1,172 @@
+<form [formGroup]="form" fxFlex="100" fxLayout="column">
+    <mat-toolbar>
+
+        <span>{{title}}</span>
+        <span class="spacer"></span>
+        <button mat-icon-button [mat-dialog-close]="data">
+            <mat-icon>close</mat-icon>
+        </button>
+
+    </mat-toolbar>
+    <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
+
+    <mat-card [class.bg-primary]="message.status=='primary'" [class.bg-accent]="message.status=='accent'"
+        [class.bg-warn]="message.status=='warn'" *ngIf="message.show">
+        {{message.text}}
+    </mat-card>
+    <div fxLayout="column">
+
+        <mat-dialog-content>
+            <mat-vertical-stepper linear="false" #stepper>
+                <mat-step>
+                    <form>
+                        <ng-template matStepLabel>Select the Record to keep (and Edit if necessary)</ng-template>
+
+                        <div class="flex-p">
+                            <div fxLayout="column">
+                                <ngx-datatable #table class="material" [headerHeight]="50" [limit]="10"
+                                    [columnMode]="'force'" [footerHeight]="50" [rowHeight]="45" [scrollbarH]="true"
+                                    [rows]="_records_to_merge" [loadingIndicator]="showLoading" [selected]="rowSelected"
+                                    (select)='onSelect($event)' selectionType="single">
+                                    <ngx-datatable-column class="merging" frozenLeft="True" name="To Keep" [width]="75"
+                                        [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                                        [resizeable]="false" [headerCheckboxable]="false" [checkboxable]="true">
+                                    </ngx-datatable-column>
+                                    <!-- Row Column Template -->
+                                    <ngx-datatable-column [width]="120" name="First Name" prop="ben_first_name"
+                                        editable="false">
+                                        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"
+                                            let-value="value" let-row="row" let-rowHeight="rowHeight">
+                                            <span *ngIf="!isEditable[rowIndex]"> {{value}} </span>
+                                            <input *ngIf="isEditable[rowIndex]" style="width: 95%;"
+                                                (blur)="updateValue($event, 'ben_first_name', rowIndex)" type="text"
+                                                name="ben_first_name" [value]="value" />
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [width]="120" name="Middle Name" prop="ben_middle_name"
+                                        editable="true">
+                                        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"
+                                            let-value="value" let-row="row" let-rowHeight="rowHeight">
+                                            <span *ngIf="!isEditable[rowIndex]"> {{value}} </span>
+                                            <input *ngIf="isEditable[rowIndex]" style="width: 95%;"
+                                                (blur)="updateValue($event, 'ben_middle_name', rowIndex)" type="text"
+                                                name="ben_middle_name" [value]="value" />
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [width]="120" name="1st Last Name" prop="ben_last_name1"
+                                        editable="true">
+                                        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"
+                                            let-value="value" let-row="row" let-rowHeight="rowHeight">
+                                            <span *ngIf="!isEditable[rowIndex]"> {{value}} </span>
+                                            <input *ngIf="isEditable[rowIndex]" style="width: 95%;"
+                                                (blur)="updateValue($event, 'ben_last_name1', rowIndex)" type="text"
+                                                name="ben_last_name1" [value]="value" />
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [width]="120" name="2nd Last Name" prop="ben_last_name2"
+                                        editable="true">
+                                        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"
+                                            let-value="value" let-row="row" let-rowHeight="rowHeight">
+                                            <span *ngIf="!isEditable[rowIndex]"> {{value}} </span>
+                                            <input *ngIf="isEditable[rowIndex]" style="width: 95%;"
+                                                (blur)="updateValue($event, 'ben_last_name2', rowIndex)" type="text"
+                                                name="ben_last_name2" [value]="value" />
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [width]="90" name="Gender" prop="ben_sex">
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [width]="90" name="Birthday" prop="ben_birthday">
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [width]="40" name="Age" prop="age"></ngx-datatable-column>
+                                    <ngx-datatable-column [width]="100" name="Type" prop="ben_beneficiary_type">
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [width]="175" name="Community" prop="ben_community">
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [width]="200" name="Actions" frozenRight="True">
+                                        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+                                            <button class="mat-small" mat-raised-button color="accent"
+                                                (click)="this.isEditable[rowIndex]=!this.isEditable[rowIndex]"
+                                                [disabled]="rowSelected[0] !== row">
+                                                {{ !isEditable[rowIndex] ? 'Edit' : 'Save' }}
+                                            </button>
+                                            <span class="spacer"></span>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                </ngx-datatable>
+                                <br>
+                                <div mat-dialog-actions align="center">
+                                    <!--                <button mat-raised-button color="primary" class="mat-elevation-z12" type="button"
+                                    [disabled]="showLoading" (click)="onSubmit(form.value);">
+                                    GUARDAR
+                                </button> -->
+                                    <button mat-raised-button color="accent" class="mat-elevation-z12" type="button"
+                                        [disabled]="showLoading" matStepperNext (click)="setSankey()">
+                                        <!-- (click)="onSubmit(form.value, true);" -->
+                                        Next
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <form>
+                        <ng-template matStepLabel>Review the activities to Merge on the selected Main</ng-template>
+
+                        <mat-card style="width: 100%;">
+                            <div>
+                                <br>
+                                <h3>
+                                    Activities Information
+                                </h3>
+                                <p>
+                                    <b>List of Activities</b>
+                                    <!-- {{ drawer_beneficiary.id }} -->
+                                </p>
+                                <div class="center" style="width: 100%;">
+                                    <google-chart #sankeyChart id="sankeyChart" [type]="sankey_type">
+                                        <!--  -->
+                                    </google-chart>
+                                    <!--  {{ drawer_beneficiary.ben_first_name + ' ' + drawer_beneficiary.ben_middle_name + ' ' + drawer_beneficiary.ben_last_name1  + ' ' + drawer_beneficiary.ben_last_name2}} -->
+                                </div>
+                            </div>
+
+                            <!--  <mat-divider></mat-divider> -->
+
+                            <!--               <mat-list>
+                            <div mat-subheader>Activities</div>
+                            <mat-list-item *ngFor="let activity of drawer_activities">
+                                <mat-icon mat-list-icon>fact_check</mat-icon>
+                                <div mat-line style="max-width: 250px;">{{activity.info_activity_title}}</div>
+                                <div mat-line> Event Date: {{activity.info_event_date | date}} </div>
+                                <div mat-line> Asistance: {{activity.list_beneficiaries.length + 1 }} </div>
+                            </mat-list-item>
+                        </mat-list> -->
+
+
+                        </mat-card>
+                        <br>
+                        <br>
+                        <div>
+                            <button mat-raised-button matStepperPrevious>Back</button>
+
+                            <button mat-raised-button matStepperNext color="accent" class="space-buttons">Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Confirm Changes</ng-template>
+                    <p>Click save to make the changes</p>
+                    <div>
+                        <button mat-raised-button color="accent" (click)="onSubmit(form.value, true);">Save</button>
+                        <button mat-raised-button matStepperPrevious class="space-buttons">Back</button>
+                        <button mat-raised-button color="primary" (click)="stepper.reset()"
+                            class="space-buttons">Reset</button>
+                    </div>
+                </mat-step>
+            </mat-vertical-stepper>
+        </mat-dialog-content>
+    </div>
+</form>

@@ -1,0 +1,52 @@
+:host ::ng-deep .datatable-body-row.active .datatable-row-group {
+  background-color: lightpink !important;
+}
+
+
+.mat-raised-button.mat-small {
+  height: 25px;
+  width: fit-content;
+  padding: 7px;
+  margin: 0px;
+  line-height: 10px !important;
+  font-size: 12px;
+
+}
+
+.mat-raised-button.mat-medium {
+  height: 33px;
+  // width: 70px;
+  // padding: 5px;
+  margin: 0px;
+  line-height: 30px !important;
+  // font-size: 14px;
+
+}
+
+.mt-5 {
+  margin-top: 5px !important;
+}
+
+.ml-5 {
+  margin-left: 5px !important;
+}
+
+.p-20 {
+  padding: 20px !important;
+}
+
+.pb-0 {
+  padding-bottom: 0px !important;
+}
+
+.mt--9 {
+  margin-top: -9px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+mat-card {
+  padding: 8px !important;
+}
