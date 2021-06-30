@@ -9,42 +9,6 @@ var auth_guard_1 = require("./security/_guards/auth.guard");
 exports.routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     {
-        path: 'dataset-list',
-        data: { title: 'dataset List' },
-        component: pages_component_1.PagesComponent,
-        canActivate: [auth_guard_1.AuthGuard],
-        children: [
-            {
-                path: '',
-                loadChildren: function () { return Promise.resolve().then(function () { return require('src/app/pages/dataset-list/dataset-list.module'); }).then(function (m) { return m.DataSetListModule; }); }
-            },
-        ]
-    },
-    {
-        path: 'beneficiaries-list',
-        data: { title: 'Beneficiaries List' },
-        component: pages_component_1.PagesComponent,
-        canActivate: [auth_guard_1.AuthGuard],
-        children: [
-            {
-                path: '',
-                loadChildren: function () { return Promise.resolve().then(function () { return require('src/app/pages/beneficiaries-list/beneficiaries-list.module'); }).then(function (m) { return m.BeneficiariesListModule; }); }
-            },
-        ]
-    },
-    {
-        path: 'evaluation',
-        data: { title: 'Evaluation' },
-        component: pages_component_1.PagesComponent,
-        // canActivate: [AuthGuard],
-        children: [
-            {
-                path: '',
-                loadChildren: function () { return Promise.resolve().then(function () { return require('src/app/pages/beneficiaries-evaluation/ben-evaluation.module'); }).then(function (m) { return m.BenEvaluationModule; }); }
-            },
-        ]
-    },
-    {
         path: 'home',
         data: { title: 'Inicio' },
         component: pages_component_1.PagesComponent,
@@ -53,6 +17,18 @@ exports.routes = [
             {
                 path: '',
                 loadChildren: function () { return Promise.resolve().then(function () { return require('src/app/pages/home/home.module'); }).then(function (m) { return m.HomeModule; }); }
+            },
+        ]
+    },
+    {
+        path: 'application-form',
+        data: { title: 'Application Form' },
+        component: pages_component_1.PagesComponent,
+        // canActivate: [AuthGuard],
+        children: [
+            {
+                path: '',
+                loadChildren: function () { return Promise.resolve().then(function () { return require('src/app/pages/application-form/application-form.module'); }).then(function (m) { return m.ApplicationFormModule; }); }
             },
         ]
     },
@@ -69,12 +45,14 @@ exports.routes = [
             },
         ]
     },
+    // ------------------------------------------------- Redirect Routes
     {
         path: 'inicio', redirectTo: 'home', pathMatch: 'full'
     },
     {
         path: 'acerca', redirectTo: 'about', pathMatch: 'full'
     },
+    // ------------------------------------------------- Other Modules
     {
         path: 'blank',
         data: { title: 'En Blanco' },

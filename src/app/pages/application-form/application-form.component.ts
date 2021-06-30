@@ -4,16 +4,15 @@ import { PagesService } from '../pages.service'
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-application-form',
+  templateUrl: './application-form.component.html',
+  styleUrls: ['./application-form.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class ApplicationFormComponent implements OnInit {
   loader: boolean;
   loading: boolean;
   myVariable: string;
   similarityPerc: number;
-  breakpoint: number;
   assessSimilarity = new FormControl(95, Validators.min(50));
 
   constructor(public pages: PagesService, public service: ListService) {
@@ -22,15 +21,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loading = false;
     this.pages.setLoader();
-
-    this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
-
-
   }
 
-  onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
-  }
   assessBeneficiaries() {
     this.loading = true;
     this.service.Get('assess-all?perc=' + (this.similarityPerc / 100)).subscribe((assess) => {

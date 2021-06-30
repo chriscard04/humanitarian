@@ -1,21 +1,18 @@
 <div style="height: 100%">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+  <!--     <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
-      </button>
+      </button> -->
       <img mat-icon-button src="../../assets/humanitarianLogo10.png" style="height: 5.7vh; margin-right: 10px;">
-      <span style="font-size: larger;  ">humanitarian</span>
+      <span style="font-size: larger; color: white;">Humanitarian Consultants</span>
       <span class="radio-spacer"></span>
       <div fxShow="true" fxHide.lt-md>
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <!--
         <a [routerLink]="'/home'" mat-button color="white" class="menu-items">Home</a>
-        <a [routerLink]="'/historia-cultura-tradicion'" mat-button color="white" class="menu-items">Historia Cultura y
-          Tradición</a>
-        <a [routerLink]="'/personalidades'" mat-button color="white" class="menu-items">Personalidades</a>
-        <a [routerLink]="'/turismo'" mat-button color="white" class="menu-items">Turismo</a>
-
-        <!-- 
+        <a [routerLink]="'/application-form'" mat-button color="white" class="menu-items">Application Form</a>
+      
         <a mat-button [matMenuTriggerFor]="acercaDeMenu">Acerca de</a>
         <mat-menu #acercaDeMenu="matMenu" xPosition="after">
           <button mat-menu-item [routerLink]="'/about'">Tu Radio</button>
@@ -33,11 +30,9 @@
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav>
       <mat-nav-list>
-        <a [routerLink]="'/home'" mat-list-item class="hvr-grow">Home</a>
-        <a [routerLink]="'/historia-cultura-tradicion'" mat-list-item class="hvr-grow">Historia Cultura y Tradición</a>
-        <a [routerLink]="'/personalidades'" mat-list-item class="hvr-grow">Personalidades</a>
-        <a [routerLink]="'/turismo'" mat-list-item class="hvr-grow">Turismo</a>
-        <!-- 
+        <!--   <a [routerLink]="'/home'" mat-list-item class="hvr-grow">Home</a>
+        <a [routerLink]="'/application-form'" mat-list-item class="hvr-grow">Application Form</a>
+       
         <a mat-list-item [matMenuTriggerFor]="acercaDeMenu" class="hvr-grow">Acerca de</a>
         <mat-menu #acercaDeMenu="matMenu" xPosition="after">
           <button mat-menu-item [routerLink]="'/about'">Tu Radio</button>

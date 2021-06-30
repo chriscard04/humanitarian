@@ -1,80 +1,48 @@
-<div class="landing-image" fxLayout="row">
-  <div class="main-content">
-    <div class="header hvr-grow-shadow">
-      <div class="center">
-        <img mat-icon-button src="../../assets/humanitarianLogo11.png" style="height: 30vh; margin-right: 10px;">
-      </div>
-      <br>
-      <div class="center">
-        <h1 [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: xx-large;">
-          ¡Bienvenidos!</h1>
-      </div>
-
-      <br>
-
-      <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;">
-        Este es un espacio dónde podrás conocer más acerca de la
-      </p>
-      <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;">
-        <b>Historia, Cultura y Tradución </b> en el distrito de
-        Chepo.
-      </p>
-      <p [ngClass]="{'sec-intro' : loader, 'sec-intro-nodelay' : !loader}" style="font-size: large;">
-        <b>
-          ~ Chepo, Panamá 🇵🇦
-        </b>
-      </p>
-      <hr>
-
+<div class="content">
+  <div style="padding: 15px;" fxLayout="row wrap" fxLayoutGap="20px grid">
+    <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%">
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>Bienvenidos</mat-card-title>
+        </mat-card-header>
+        <div class="center">
+          <img style="width: 70%;" mat-card-image src="../../../assets/humanitarianLogo11.png">
+        </div>
+        <mat-card-content>
+          <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;">
+            Pronto conocerás más acerca de <b>Humanitarian Consultants. </b>
+          </p>
+          <p>~ Tenemos presencia en </p>
+          <p [ngClass]="{'sec-intro' : loader, 'sec-intro-nodelay' : !loader}" style="font-size: large;">
+            <b>
+              🇨🇷 Costa Rica
+            </b> 🇨🇴 Colombia 🇵🇦 Panamá
+          </p>
+          <p [ngClass]="{'sec-intro' : loader, 'sec-intro-nodelay' : !loader}" style="font-size: large;">
+            🇪🇨 Ecuador 🇵🇪 Perú 🇸🇻 El Salvador
+          </p>
+        </mat-card-content>
+      </mat-card>
     </div>
-    <br><br><br><br><br><br>
+    <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%">
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>Candidate History Form</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <br>
+          <div class="center">
+            <img style="width: 50%;" mat-card-image src="../../../assets/humanitarianLogo10.png">
+          </div>
+          <p style="font-size: larger;">
+            ¡Te invitamos a formar parte de nuestro equipo!
+          </p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" [routerLink]="'/application-form'">Registrarme</button>
+          <button mat-raised-button color="primary" style="color: white;" [routerLink]="'/login'">Iniciar Sesion</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
-
-  <!--   <div class="main-content">
-    <div class="header hvr-grow-shadow">
-      <div class="center">
-        <h1 [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: x-large;">Similarity
-          Assessment
-        </h1>
-
-        <br>
-      </div>
-
-      <div class="center">
-        <mat-form-field appearance="fill">
-          <mat-label>Set similarity percentage</mat-label>
-          <input matInput type="number" placeholder="Ex. 90" [formControl]="assessSimilarity"
-            [(ngModel)]="similarityPerc" min="50">
-          <span matSuffix>%</span>
-          <mat-error *ngIf="assessSimilarity.invalid">Less than 50% is not reccomended</mat-error>
-        </mat-form-field>
-        <br>
-      </div>
-
-      <div class="center">
-        <button mat-raised-button color="primary" (click)="assessBeneficiaries()">Assess Beneficiaries</button>
-        <br>
-      </div>
-      <div class="center">
-        <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;"
-          *ngIf="loading">
-          <mat-spinner></mat-spinner>
-        </p>
-        <br>
-        <br>
-      </div>
-      <hr>
-    </div>
-    <br><br><br><br><br><br>
-  </div> -->
-
-  <!-- 
-  <div [ngClass]="{'incentive-intro' : loader, 'incentive-intro-nodelay' : !loader}" class="hvr-bubble-float-right center">
-    <p class="center" style="color: crimson !important; font-weight: bold; font-size: large; margin-top: 10px;">
-      ¡Haz oír tu voz!
-    </p>
-    <span class="center" style="color: grey !important; font-size: medium;">
-      Reporta Sintonía
-    </span>
-  </div> -->
 </div>

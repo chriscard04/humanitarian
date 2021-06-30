@@ -1,0 +1,80 @@
+<div class="landing-image" fxLayout="row">
+  <div class="main-content">
+    <div class="header hvr-grow-shadow">
+      <div class="center">
+        <img mat-icon-button src="../../assets/humanitarianLogo11.png" style="height: 30vh; margin-right: 10px;">
+      </div>
+      <br>
+      <div class="center">
+        <h1 [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: xx-large;">
+          ¡Bienvenidos!</h1>
+      </div>
+
+      <br>
+
+      <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;">
+        Este es un espacio dónde podrás conocer más acerca de la
+      </p>
+      <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;">
+        <b>Historia, Cultura y Tradución </b> en el distrito de
+        Chepo.
+      </p>
+      <p [ngClass]="{'sec-intro' : loader, 'sec-intro-nodelay' : !loader}" style="font-size: large;">
+        <b>
+          ~ Chepo, Panamá 🇵🇦
+        </b>
+      </p>
+      <hr>
+
+    </div>
+    <br><br><br><br><br><br>
+  </div>
+
+  <!--   <div class="main-content">
+    <div class="header hvr-grow-shadow">
+      <div class="center">
+        <h1 [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: x-large;">Similarity
+          Assessment
+        </h1>
+
+        <br>
+      </div>
+
+      <div class="center">
+        <mat-form-field appearance="fill">
+          <mat-label>Set similarity percentage</mat-label>
+          <input matInput type="number" placeholder="Ex. 90" [formControl]="assessSimilarity"
+            [(ngModel)]="similarityPerc" min="50">
+          <span matSuffix>%</span>
+          <mat-error *ngIf="assessSimilarity.invalid">Less than 50% is not reccomended</mat-error>
+        </mat-form-field>
+        <br>
+      </div>
+
+      <div class="center">
+        <button mat-raised-button color="primary" (click)="assessBeneficiaries()">Assess Beneficiaries</button>
+        <br>
+      </div>
+      <div class="center">
+        <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;"
+          *ngIf="loading">
+          <mat-spinner></mat-spinner>
+        </p>
+        <br>
+        <br>
+      </div>
+      <hr>
+    </div>
+    <br><br><br><br><br><br>
+  </div> -->
+
+  <!-- 
+  <div [ngClass]="{'incentive-intro' : loader, 'incentive-intro-nodelay' : !loader}" class="hvr-bubble-float-right center">
+    <p class="center" style="color: crimson !important; font-weight: bold; font-size: large; margin-top: 10px;">
+      ¡Haz oír tu voz!
+    </p>
+    <span class="center" style="color: grey !important; font-size: medium;">
+      Reporta Sintonía
+    </span>
+  </div> -->
+</div>

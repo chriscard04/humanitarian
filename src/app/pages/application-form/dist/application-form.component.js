@@ -6,24 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.HomeComponent = void 0;
+exports.ApplicationFormComponent = void 0;
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
-var HomeComponent = /** @class */ (function () {
-    function HomeComponent(pages, service) {
+var ApplicationFormComponent = /** @class */ (function () {
+    function ApplicationFormComponent(pages, service) {
         this.pages = pages;
         this.service = service;
         this.assessSimilarity = new forms_1.FormControl(95, forms_1.Validators.min(50));
     }
-    HomeComponent.prototype.ngOnInit = function () {
+    ApplicationFormComponent.prototype.ngOnInit = function () {
         this.loading = false;
         this.pages.setLoader();
-        this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
     };
-    HomeComponent.prototype.onResize = function (event) {
-        this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
-    };
-    HomeComponent.prototype.assessBeneficiaries = function () {
+    ApplicationFormComponent.prototype.assessBeneficiaries = function () {
         var _this = this;
         this.loading = true;
         this.service.Get('assess-all?perc=' + (this.similarityPerc / 100)).subscribe(function (assess) {
@@ -33,13 +29,13 @@ var HomeComponent = /** @class */ (function () {
             });
         });
     };
-    HomeComponent = __decorate([
+    ApplicationFormComponent = __decorate([
         core_1.Component({
-            selector: 'app-home',
-            templateUrl: './home.component.html',
-            styleUrls: ['./home.component.scss']
+            selector: 'app-application-form',
+            templateUrl: './application-form.component.html',
+            styleUrls: ['./application-form.component.scss']
         })
-    ], HomeComponent);
-    return HomeComponent;
+    ], ApplicationFormComponent);
+    return ApplicationFormComponent;
 }());
-exports.HomeComponent = HomeComponent;
+exports.ApplicationFormComponent = ApplicationFormComponent;

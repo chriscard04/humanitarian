@@ -21,41 +21,17 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'historia-cultura-tradicion',
-    data: { title: 'Historia, Cultura y Tradición' },
+    path: 'application-form',
+    data: { title: 'Application Form' },
     component: PagesComponent,
     // canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        loadChildren: () => import('src/app/pages/historia/historia.module').then(m => m.HistoriaModule)
+        loadChildren: () => import('src/app/pages/application-form/application-form.module').then(m => m.ApplicationFormModule)
       },
     ],
   },
-  /* {
-    path: 'personalidades',
-    data: { title: 'Personalidades' },
-    component: PagesComponent,
-    // canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/pages/personalidades/personalidades.module').then(m => m.PersonalidadesModule)
-      },
-    ],
-  },
-  {
-    path: 'turismo',
-    data: { title: 'Turismo' },
-    component: PagesComponent,
-    // canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/pages/turismo/turismo.module').then(m => m.TurismoModule)
-      },
-    ],
-  }, */
   {
     path: 'about',
     data: { title: 'Acerca de' },
@@ -91,43 +67,6 @@ export const routes: Routes = [
       },
     ],
   },
-  {
-    path: 'dataset-list',
-    data: { title: 'dataset List' },
-    component: PagesComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/pages/dataset-list/dataset-list.module').then(m => m.DataSetListModule)
-      },
-    ],
-  },
-  {
-    path: 'beneficiaries-list',
-    data: { title: 'Beneficiaries List' },
-    component: PagesComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/pages/beneficiaries-list/beneficiaries-list.module').then(m => m.BeneficiariesListModule)
-      },
-    ],
-  },
-  {
-    path: 'evaluation',
-    data: { title: 'Evaluation' },
-    component: PagesComponent,
-    // canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/pages/beneficiaries-evaluation/ben-evaluation.module').then(m => m.BenEvaluationModule)
-      },
-    ],
-  },
-
 
   // Login
   {
