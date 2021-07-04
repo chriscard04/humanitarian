@@ -47,8 +47,6 @@ var ApplicationFormComponent = /** @class */ (function () {
               this.perfiles = result;
             }); */
         var temp = this.globalFunctions.getFormFields();
-        console.log(temp);
-        console.log(this.form_fields);
     };
     ApplicationFormComponent.prototype.closeModal = function () {
         if (this.form.valid) {

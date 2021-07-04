@@ -49,15 +49,15 @@
         <mat-drawer #drawer class="tune-in-drawer pr-8" mode="over" position="end">
           <!-- Here content of drawer -->
         </mat-drawer>
-
-        <router-outlet></router-outlet>
-
-        <footer class="footer" fxFlexOffset="auto">
+        
+          <router-outlet></router-outlet>
+        
+        <footer class="footer">
           <div class="container">
-
+            <br><br>
             <mat-toolbar color="accent">
               <span class="spacer"></span>
-              <mat-form-field style="width: 100px; height: 50px;">
+              <mat-form-field style="width: 100px; height: 100%;">
                 <mat-label>Language</mat-label>
                 <mat-select [(ngModel)]="selectedValue" (selectionChange)="useLanguage(selectedValue)">
                   <mat-option [value]="option" *ngFor="let option of ['es','en']">{{ option }}</mat-option>

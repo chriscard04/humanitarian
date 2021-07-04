@@ -3,7 +3,8 @@
 		"cancel": "Cancel",
 		"new_application": "New Application",
 		"required": "Required",
-		"save": "Save"
+		"save": "Save",
+		"yes": "Yes"
 	},
 	"hc": {
 		"address": "Current Address",

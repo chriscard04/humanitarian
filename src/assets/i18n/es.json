@@ -3,7 +3,8 @@
 		"cancel": "Cancelar",
 		"new_application": "Nueva Aplicación",
 		"required": "Requerido",
-		"save": "Guardar"
+		"save": "Guardar",
+		"yes": "Sí"
 	},
 	"hc": {
 		"address": "Dirección Actual",

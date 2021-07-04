@@ -15,7 +15,7 @@
 
     <mat-card-content>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxFlex="100">
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxFlex="100" fxLayout="column">
         <div class="flex-p">
           <div fxLayout="row wrap">
             <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
@@ -67,8 +67,8 @@
             </div>
 
             <mat-form-field class="w-90" floatLabel="always">
-              <mat-label>{{'hc.travel' | translate}}</mat-label>
-              <mat-slide-toggle formControlName="travel">{{form.value.travel === true ? 'Activo' : 'Inactivo'}}
+              <p>{{'hc.travel' | translate}}</p>
+              <mat-slide-toggle formControlName="travel">{{form.value.travel === true ? ('app.yes' | translate) : 'No'}}
               </mat-slide-toggle>
               <textarea matInput hidden disabled></textarea>
               <mat-error *ngIf="form.controls.travel.errors?.required">{{'app.required' | translate}}
@@ -114,7 +114,7 @@
               </mat-form-field>
             </div>
 
-            <div mat-dialog-actions align="center">
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" mat-dialog-actions align="center">
               <button mat-raised-button color="accent" class="mat-elevation-z12" type="button" [disabled]="showLoading">
                 {{'app.cancel' | translate}}
               </button>

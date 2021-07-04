@@ -64,8 +64,6 @@ export class ApplicationFormComponent implements OnInit {
           this.perfiles = result;
         }); */
     let temp = this.globalFunctions.getFormFields();
-    console.log(temp)
-    console.log(this.form_fields)
   }
 
   public closeModal(): void {
