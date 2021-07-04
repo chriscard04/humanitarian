@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { ApplicationFormComponent } from './application-form.component';
+import { GlobalFunctions } from 'src/shared/globalFunctions';
 
 export const routes = [
   {
@@ -21,5 +22,6 @@ export const routes = [
     SharedModule,
   ],
   declarations: [ApplicationFormComponent],
+  providers: [GlobalFunctions]
 })
 export class ApplicationFormModule { }

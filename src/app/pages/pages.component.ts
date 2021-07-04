@@ -5,6 +5,7 @@ import { Settings } from '../app.settings.model';
 import { AppSettings } from '../app.settings';
 import { PagesService } from './pages.service'
 import { MatDrawer } from '@angular/material/sidenav';
+import { TranslateService } from '@ngx-translate/core';
 // import { AppService } from 'app/core/services/app.services';
 
 @Component({
@@ -32,11 +33,13 @@ export class PagesComponent implements OnInit, AfterViewInit {
   public UserName: string;
   public radio: any;
   loader: boolean;
+  selectedValue;
 
   constructor(
     private _appSettings: AppSettings,
     private _router: Router,
-    private _pages: PagesService
+    private _pages: PagesService,
+    private translate: TranslateService
     // private _menuService: MenuService,
     // private _service: AppService
   ) {
@@ -55,6 +58,8 @@ export class PagesComponent implements OnInit, AfterViewInit {
     this.menuTypeOption = this.settings.menuType;
     this.defaultMenu = this.settings.menu;
 
+    this.selectedValue = 'en'
+    this.translate.setDefaultLang(this.selectedValue);
 
 
     /*     const clientObservable = this._service.getClientName();
@@ -164,5 +169,9 @@ export class PagesComponent implements OnInit, AfterViewInit {
 
   getClient(clientName: string) {
     this.ClientName = clientName;
+  }
+
+  useLanguage(language: string): void {
+    this.translate.use(language);
   }
 }

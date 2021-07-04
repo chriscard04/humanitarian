@@ -3,9 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Translate
+import { TranslateModule } from '@ngx-translate/core';
+
 // Additional components
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+import { MatNativeDateModule } from '@angular/material/core';
 
 //Angular Material Components
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -59,6 +63,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MatInputModule,
     MatAutocompleteModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatRadioModule,
     MatSelectModule,
@@ -87,7 +92,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MatBadgeModule,
     NgxDatatableModule,
     GoogleChartsModule,
-    MatCarouselModule
+    MatCarouselModule,
+    TranslateModule
 
   ],
   exports: [
@@ -131,6 +137,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     GoogleChartsModule,
     MatCarouselModule,
     MatCarouselComponent,
+    TranslateModule
   ],
   declarations: [
     ConfirmationDialogComponent,
@@ -139,7 +146,10 @@ import { GoogleChartsModule } from 'angular-google-charts';
   entryComponents: [
     AlertDialogComponent,
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

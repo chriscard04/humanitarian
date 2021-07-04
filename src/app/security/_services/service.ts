@@ -57,6 +57,12 @@ export class WebApi {
     }).pipe(catchError(() => throwError('Sin Foto de Perfil')));
   }
 
+  post(obj, criterio): Observable<any> {
+    var sUrl = this.BASE_URL + obj;
+    return this.http.post(sUrl, criterio)
+      .pipe(map(this.extractData), catchError(this.handleError));
+  }
+
   Post(obj, criterio): Observable<any> {
     var sUrl = this.BASE_URL + obj;
     sUrl = this.addToken(sUrl);

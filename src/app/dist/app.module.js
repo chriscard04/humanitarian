@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.AppModule = void 0;
+exports.HttpLoaderFactory = exports.AppModule = void 0;
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
@@ -24,6 +24,9 @@ var forms_1 = require("@angular/forms");
 var service_1 = require("./security/_services/service");
 var _helpers_1 = require("./security/_helpers");
 var user_menu_component_1 = require("src/theme/user-menu/user-menu.component");
+// import ngx-translate and the http loader
+var core_2 = require("@ngx-translate/core");
+var http_loader_1 = require("@ngx-translate/http-loader");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -32,6 +35,13 @@ var AppModule = /** @class */ (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpClientModule,
+                core_2.TranslateModule.forRoot({
+                    loader: {
+                        provide: core_2.TranslateLoader,
+                        useFactory: HttpLoaderFactory,
+                        deps: [http_1.HttpClient]
+                    }
+                }),
                 animations_1.BrowserAnimationsModule,
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
@@ -60,3 +70,8 @@ var AppModule = /** @class */ (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
+// required for AOT compilation
+function HttpLoaderFactory(http) {
+    return new http_loader_1.TranslateHttpLoader(http);
+}
+exports.HttpLoaderFactory = HttpLoaderFactory;

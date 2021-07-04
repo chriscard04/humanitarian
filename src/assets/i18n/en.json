@@ -1,0 +1,43 @@
+{
+	"app": {
+		"cancel": "Cancel",
+		"new_application": "New Application",
+		"required": "Required",
+		"save": "Save"
+	},
+	"hc": {
+		"address": "Current Address",
+		"c_contributions": "Please, elaborate and highlight significant contributions to the project/program or organization",
+		"c_years": "Total years of experience in implementing and leading international development projects/programs or consultancies",
+		"consultancies": "International Development Programs / Consultancies",
+		"contact_number": "Contact Number",
+		"e_degree": "Degree Level",
+		"e_title": "Degree Title",
+		"e_year": "Year",
+		"education": "Education",
+		"email": "Email",
+		"expected_salary": "Expected Salary per day (USD)",
+		"g_other_agency": "Agency",
+		"g_other_years": "Also indicate if you have experience with UN, MDB’s, International Financial Institutions, funding agencies, EU, etc.), international organizations, non-profit organizations, and private foundations (i.e., philanthropic, commercial)",
+		"g_us_agency": "Agency",
+		"g_us_years": "How many years of experience do you have in acquisition and implementation of global programs from government awards specifically with USAID and/or USG, ECHO, AIECI, others?",
+		"global_awards": "Global programs from government awards",
+		"identification": "ID Number",
+		"l_language": "Language",
+		"l_level": "Level of Proficiency",
+		"languages": "Please list your languages and your level of proficiency",
+		"name": "Name",
+		"position": "Position applying for",
+		"preferred_location": "Please list your preferred location",
+		"questions": "If you were to proceed with the process, what questions would you have?",
+		"start_date": "Available Start Date",
+		"t_area": "Thematic Area",
+		"t_position": "Capacity (Position?)",
+		"t_project": "Projects Context",
+		"thematic_experience": "Thematic areas experience",
+		"travel": "Are you willing and available to travel extensively, both domestically and internationally to developing countries, especially in the Latin America and Caribbean region?",
+		"w_area": "Experience Area / Expertise",
+		"w_country": "Country",
+		"work_experience": "Countries of work experience"
+	}
+}

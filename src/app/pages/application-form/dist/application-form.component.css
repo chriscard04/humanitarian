@@ -19,7 +19,6 @@ mat-card {
   width: 90%;
 }
 
-
 .mat-footer-row,
 .mat-header-row,
 .mat-row {
@@ -44,9 +43,8 @@ mat-card {
 .agregarHover:hover {
   color: green !important;
   font-weight: bold;
-
 }
 
-.mat-form-field{
+.mat-form-field {
   margin: 10px !important;
 }

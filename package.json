@@ -25,6 +25,8 @@
     "@angular/platform-browser-dynamic": "^9.1.13",
     "@angular/router": "~9.1.6",
     "@ngmodule/material-carousel": "^0.6.0",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "@swimlane/ngx-datatable": "17.1.0",
     "@types/d3-sankey": "^0.11.1",
     "angular-google-charts": "^2.1.0",
@@ -75,6 +77,5 @@
     "email": "chriscard11@gmail.com",
     "url": "https://www.linkedin.com/in/chriscard11/"
   },
-  "license": "MIT",
-  "optionalDependencies": {}
+  "license": "MIT"
 }

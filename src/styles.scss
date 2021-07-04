@@ -42,6 +42,12 @@ body {
   font-family: Arial, Helvetica, sans-serif !important;
 }
 
+button {
+  color: white !important;
+  margin: 5px !important;
+}
+
+
 .center {
   display: flex;
   justify-content: center;
@@ -72,3 +78,18 @@ a {
   background: grey;
   border-radius: 10px;
 }
+
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.footer {
+  // position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px;
+}
+

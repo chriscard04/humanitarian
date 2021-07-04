@@ -1,0 +1,43 @@
+{
+	"app": {
+		"cancel": "Cancelar",
+		"new_application": "Nueva Aplicación",
+		"required": "Requerido",
+		"save": "Guardar"
+	},
+	"hc": {
+		"address": "Dirección Actual",
+		"c_contributions": "Por favor, explique y destaque sus contribuciones significativas al proyecto/programa u organización",
+		"c_years": "Total de años de experiencia en la ejecución y dirección de proyectos/programas de desarrollo internacional o consultorías",
+		"consultancies": "Programas de Desarrollo Internacional / Consultorías",
+		"contact_number": "Número de contacto",
+		"e_degree": "Nivel Académico",
+		"e_title": "Título Académico",
+		"e_year": "Año",
+		"education": "Educación",
+		"email": "Correo Electrónico",
+		"expected_salary": "Salario esperado por día (Dólares Américanos)",
+		"g_other_agency": "Agencia",
+		"g_other_years": "Indique también si tiene experiencia con las Naciones Unidas, los bancos multilaterales de desarrollo, las instituciones financieras internacionales, los organismos de financiación, la UE, etc.), las organizaciones internacionales, las organizaciones sin ánimo de lucro y las fundaciones privadas (es decir, filantrópicas, comerciales)",
+		"g_us_agency": "Agencia",
+		"g_us_years": "¿Cuántos años de experiencia tiene en la adquisición y ejecución de programas globales a partir de adjudicaciones gubernamentales, específicamente con USAID y/o Gobierno Americano, ECHO, AIECI, otro?",
+		"global_awards": "Programas globales a partir de adjudicaciones gubernamentales",
+		"identification": "Número de Identificación",
+		"l_language": "Idioma",
+		"l_level": "Nivel de competencia",
+		"languages": "Indique sus idiomas y su nivel de competencia",
+		"name": "Nombre",
+		"position": "Posición para que aplica",
+		"preferred_location": "Por favor, indique su ubicación preferida",
+		"questions": "Si se decidiera a seguir adelante con el proceso, ¿qué preguntas se plantearía?",
+		"start_date": "Fecha de inicio disponible",
+		"t_area": "Área Temática",
+		"t_position": "Puesto (Posición)",
+		"t_project": "Contexto de Proyectos",
+		"thematic_experience": "Experiencia en áreas temáticas",
+		"travel": "¿Está dispuesto y disponible para viajar mucho, tanto a nivel nacional como internacional, a países en desarrollo, especialmente en la región de América Latina y el Caribe?",
+		"w_area": "Área de Experiencia / Especialización",
+		"w_country": "País",
+		"work_experience": "Países en los que tiene experiencia"
+	}
+}

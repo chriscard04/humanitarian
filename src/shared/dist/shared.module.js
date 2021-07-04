@@ -11,6 +11,12 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var flex_layout_1 = require("@angular/flex-layout");
 var forms_1 = require("@angular/forms");
+// Translate
+var core_2 = require("@ngx-translate/core");
+// Additional components
+var material_carousel_1 = require("@ngmodule/material-carousel");
+var material_carousel_2 = require("@ngmodule/material-carousel");
+var core_3 = require("@angular/material/core");
 //Angular Material Components
 var checkbox_1 = require("@angular/material/checkbox");
 var button_1 = require("@angular/material/button");
@@ -72,6 +78,7 @@ var SharedModule = /** @class */ (function () {
                 input_1.MatInputModule,
                 autocomplete_1.MatAutocompleteModule,
                 datepicker_1.MatDatepickerModule,
+                core_3.MatNativeDateModule,
                 form_field_1.MatFormFieldModule,
                 radio_1.MatRadioModule,
                 select_1.MatSelectModule,
@@ -99,7 +106,9 @@ var SharedModule = /** @class */ (function () {
                 paginator_1.MatPaginatorModule,
                 badge_1.MatBadgeModule,
                 ngx_datatable_1.NgxDatatableModule,
-                angular_google_charts_1.GoogleChartsModule
+                angular_google_charts_1.GoogleChartsModule,
+                material_carousel_1.MatCarouselModule,
+                core_2.TranslateModule
             ],
             exports: [
                 flex_layout_1.FlexLayoutModule,
@@ -139,7 +148,10 @@ var SharedModule = /** @class */ (function () {
                 badge_1.MatBadgeModule,
                 confirmation_dialog_component_1.ConfirmationDialogComponent,
                 ngx_datatable_1.NgxDatatableModule,
-                angular_google_charts_1.GoogleChartsModule
+                angular_google_charts_1.GoogleChartsModule,
+                material_carousel_1.MatCarouselModule,
+                material_carousel_2.MatCarouselComponent,
+                core_2.TranslateModule
             ],
             declarations: [
                 confirmation_dialog_component_1.ConfirmationDialogComponent,
@@ -148,7 +160,10 @@ var SharedModule = /** @class */ (function () {
             entryComponents: [
                 alert_dialog_component_1.AlertDialogComponent,
             ],
-            providers: []
+            providers: [
+                datepicker_1.MatDatepickerModule,
+                core_3.MatNativeDateModule
+            ]
         })
     ], SharedModule);
     return SharedModule;

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { SharedModule } from '../shared/shared.module';
 import { PagesComponent } from './pages/pages.component';
@@ -20,10 +20,21 @@ import { WebApi } from './security/_services/service';
 import { ErrorInterceptor, JwtInterceptor } from './security/_helpers';
 import { UserMenuComponent } from 'src/theme/user-menu/user-menu.component';
 
+// import ngx-translate and the http loader
+import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -57,3 +68,9 @@ import { UserMenuComponent } from 'src/theme/user-menu/user-menu.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

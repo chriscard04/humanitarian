@@ -1,0 +1,200 @@
+[{
+        "position": {
+            "eng": "Position applying for",
+            "esp": "Posición para que aplica"
+        }
+    },
+    {
+        "name": {
+            "eng": "Name",
+            "esp": "Nombre"
+        }
+    },
+    {
+        "identification": {
+            "eng": "ID Number",
+            "esp": "Número de Identificación"
+        }
+    },
+    {
+        "address": {
+            "eng": "Current Address",
+            "esp": "Dirección Actual"
+        }
+    },
+    {
+        "contact_number": {
+            "eng": "Contact Number",
+            "esp": "Número de contacto"
+        }
+    },
+    {
+        "email": {
+            "eng": "Email",
+            "esp": "Correo Electrónico"
+        }
+    },
+    {
+        "education": {
+            "eng": "Education",
+            "esp": "Educación"
+        }
+    },
+    {
+        "e_degree": {
+            "eng": "Degree Level",
+            "esp": "Nivel Académico"
+        }
+    },
+    {
+        "e_title": {
+            "eng": "Degree Title",
+            "esp": "Título Académico"
+        }
+    },
+    {
+        "e_year": {
+            "eng": "Year",
+            "esp": "Año"
+        }
+    },
+    {
+        "work_experience": {
+            "eng": "Countries of work experience",
+            "esp": "Países en los que tiene experiencia"
+        }
+    },
+    {
+        "w_country": {
+            "eng": "Country",
+            "esp": "País"
+        }
+    },
+    {
+        "w_area": {
+            "eng": "Experience Area / Expertise",
+            "esp": "Área de Experiencia / Especialización"
+        }
+    },
+    {
+        "thematic_experience": {
+            "eng": "Thematic areas experience",
+            "esp": "Experiencia en áreas temáticas"
+        }
+    },
+    {
+        "t_area": {
+            "eng": "Thematic Area",
+            "esp": "Área Temática"
+        }
+    },
+    {
+        "t_project": {
+            "eng": "Projects Context",
+            "esp": "Contexto de Proyectos"
+        }
+    },
+    {
+        "t_position": {
+            "eng": "Capacity (Position?)",
+            "esp": "Puesto (Posición)"
+        }
+    },
+    {
+        "consultancies": {
+            "eng": "International Development Programs / Consultancies",
+            "esp": "Programas de Desarrollo Internacional / Consultorías"
+        }
+    },
+    {
+        "c_years": {
+            "eng": "Total years of experience in implementing and leading international development projects/programs or consultancies",
+            "esp": "Total de años de experiencia en la ejecución y dirección de proyectos/programas de desarrollo internacional o consultorías"
+        }
+    },
+    {
+        "c_contributions": {
+            "eng": "Please, elaborate and highlight significant contributions to the project/program or organization",
+            "esp": "Por favor, explique y destaque sus contribuciones significativas al proyecto/programa u organización"
+        }
+    },
+    {
+        "global_awards": {
+            "eng": "Global programs from government awards",
+            "esp": "programas globales a partir de adjudicaciones gubernamentales"
+        }
+    },
+    {
+        "g_us_years": {
+            "eng": "How many years of experience do you have in acquisition and implementation of global programs from government awards specifically with USAID and/or USG, ECHO, AIECI, others?",
+            "esp": "¿Cuántos años de experiencia tiene en la adquisición y ejecución de programas globales a partir de adjudicaciones gubernamentales, específicamente con USAID y/o Gobierno Americano, ECHO, AIECI, otro?"
+        }
+    },
+    {
+        "g_us_agency": {
+            "eng": "Agency",
+            "esp": "Agencia"
+        }
+    },
+    {
+        "g_other_years": {
+            "eng": "Also indicate if you have experience with UN, MDB’s, International Financial Institutions, funding agencies, EU, etc.), international organizations, non-profit organizations, and private foundations (i.e., philanthropic, commercial)",
+            "esp": "Indique también si tiene experiencia con las Naciones Unidas, los bancos multilaterales de desarrollo, las instituciones financieras internacionales, los organismos de financiación, la UE, etc.), las organizaciones internacionales, las organizaciones sin ánimo de lucro y las fundaciones privadas (es decir, filantrópicas, comerciales)"
+        }
+    },
+    {
+        "g_other_agency": {
+            "eng": "Agency",
+            "esp": "Agencia"
+        }
+    },
+    {
+        "languages": {
+            "eng": "Please list your languages and your level of proficiency",
+            "esp": "Indique sus idiomas y su nivel de competencia"
+        }
+    },
+    {
+        "l_language": {
+            "eng": "Language",
+            "esp": "Idioma"
+        }
+    },
+    {
+        "l_level": {
+            "eng": "Level of Proficiency",
+            "esp": "Nivel de competencia"
+        }
+    },
+    {
+        "travel": {
+            "eng": "Are you willing and available to travel extensively, both domestically and internationally to developing countries, especially in the Latin America and Caribbean region?",
+            "esp": "¿Está dispuesto y disponible para viajar mucho, tanto a nivel nacional como internacional, a países en desarrollo, especialmente en la región de América Latina y el Caribe?"
+        }
+    },
+    {
+        "preferred_location": {
+            "eng": "Please list your preferred location",
+            "esp": "Por favor, indique su ubicación preferida"
+        }
+    },
+    {
+        "expected_salary": {
+            "eng": "Expected Salary per day (USD)",
+            "esp": "Salario esperado por día (Dólares Américanos)"
+        }
+    },
+    {
+        "start_date": {
+            "eng": "Available Start Date",
+            "esp": "Fecha de inicio disponible"
+        }
+    },
+    {
+        "questions": {
+            "eng": "If you were to proceed with the process, what questions would you have?",
+            "esp": "Si se decidiera a seguir adelante con el proceso, ¿qué preguntas se plantearía?"
+
+        }
+    }
+]

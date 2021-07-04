@@ -13,6 +13,7 @@ var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 var shared_module_1 = require("../../../shared/shared.module");
 var application_form_component_1 = require("./application-form.component");
+var globalFunctions_1 = require("src/shared/globalFunctions");
 exports.routes = [
     {
         path: '',
@@ -31,7 +32,8 @@ var ApplicationFormModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 shared_module_1.SharedModule,
             ],
-            declarations: [application_form_component_1.ApplicationFormComponent]
+            declarations: [application_form_component_1.ApplicationFormComponent],
+            providers: [globalFunctions_1.GlobalFunctions]
         })
     ], ApplicationFormModule);
     return ApplicationFormModule;

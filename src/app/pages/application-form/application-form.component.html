@@ -1,80 +1,132 @@
-<div class="landing-image" fxLayout="row">
-  <div class="main-content">
-    <div class="header hvr-grow-shadow">
-      <div class="center">
-        <img mat-icon-button src="../../assets/humanitarianLogo11.png" style="height: 30vh; margin-right: 10px;">
-      </div>
-      <br>
-      <div class="center">
-        <h1 [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: xx-large;">
-          ¡Bienvenidos!</h1>
-      </div>
+<div style="margin-bottom: 10px;">
 
-      <br>
 
-      <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;">
-        Este es un espacio dónde podrás conocer más acerca de la
-      </p>
-      <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;">
-        <b>Historia, Cultura y Tradución </b> en el distrito de
-        Chepo.
-      </p>
-      <p [ngClass]="{'sec-intro' : loader, 'sec-intro-nodelay' : !loader}" style="font-size: large;">
-        <b>
-          ~ Chepo, Panamá 🇵🇦
-        </b>
-      </p>
-      <hr>
+  <mat-card fxFlex="90" class="center mat-elevation-z4" style="margin-top: 25px; margin-bottom: 25px;">
+    <mat-card-header>
+      <mat-card-title> {{'app.new_application' | translate}}</mat-card-title>
+    </mat-card-header>
 
-    </div>
-    <br><br><br><br><br><br>
-  </div>
+    <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
 
-  <!--   <div class="main-content">
-    <div class="header hvr-grow-shadow">
-      <div class="center">
-        <h1 [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: x-large;">Similarity
-          Assessment
-        </h1>
+    <mat-card [class.bg-primary]="message.status=='primary'" [class.bg-accent]="message.status=='accent'"
+      [class.bg-warn]="message.status=='warn'" *ngIf="message.show">
+      {{message.text}}
+    </mat-card>
 
-        <br>
-      </div>
+    <mat-card-content>
 
-      <div class="center">
-        <mat-form-field appearance="fill">
-          <mat-label>Set similarity percentage</mat-label>
-          <input matInput type="number" placeholder="Ex. 90" [formControl]="assessSimilarity"
-            [(ngModel)]="similarityPerc" min="50">
-          <span matSuffix>%</span>
-          <mat-error *ngIf="assessSimilarity.invalid">Less than 50% is not reccomended</mat-error>
-        </mat-form-field>
-        <br>
-      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxFlex="100">
+        <div class="flex-p">
+          <div fxLayout="row wrap">
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <input matInput placeholder="{{'hc.position' | translate}}" formControlName="position">
+                <mat-error *ngIf="form.controls.position.errors?.required"> {{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <input matInput placeholder="{{'hc.name' | translate}}" formControlName="name">
+                <mat-error *ngIf="form.controls.name.errors?.required">{{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
 
-      <div class="center">
-        <button mat-raised-button color="primary" (click)="assessBeneficiaries()">Assess Beneficiaries</button>
-        <br>
-      </div>
-      <div class="center">
-        <p [ngClass]="{'main-intro' : loader, 'main-intro-nodelay' : !loader}" style="font-size: large;"
-          *ngIf="loading">
-          <mat-spinner></mat-spinner>
-        </p>
-        <br>
-        <br>
-      </div>
-      <hr>
-    </div>
-    <br><br><br><br><br><br>
-  </div> -->
+            <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <input matInput placeholder="{{'hc.identification' | translate}}" formControlName="identification">
+                <mat-error *ngIf="form.controls.identification.errors?.required">{{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
 
-  <!-- 
-  <div [ngClass]="{'incentive-intro' : loader, 'incentive-intro-nodelay' : !loader}" class="hvr-bubble-float-right center">
-    <p class="center" style="color: crimson !important; font-weight: bold; font-size: large; margin-top: 10px;">
-      ¡Haz oír tu voz!
-    </p>
-    <span class="center" style="color: grey !important; font-size: medium;">
-      Reporta Sintonía
-    </span>
-  </div> -->
+            <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <input matInput placeholder="{{'hc.address' | translate}}" formControlName="address">
+                <mat-error *ngIf="form.controls.address.errors?.required"> {{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <input matInput placeholder="{{'hc.contact_number' | translate}}" formControlName="contact_number">
+                <mat-error *ngIf="form.controls.contact_number.errors?.required"> {{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+
+            <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <input matInput placeholder="{{'hc.email' | translate}}" formControlName="email" type="email">
+                <mat-error *ngIf="form.controls.email.errors?.required">{{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <mat-form-field class="w-90" floatLabel="always">
+              <mat-label>{{'hc.travel' | translate}}</mat-label>
+              <mat-slide-toggle formControlName="travel">{{form.value.travel === true ? 'Activo' : 'Inactivo'}}
+              </mat-slide-toggle>
+              <textarea matInput hidden disabled></textarea>
+              <mat-error *ngIf="form.controls.travel.errors?.required">{{'app.required' | translate}}
+              </mat-error>
+            </mat-form-field>
+
+
+            <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <input matInput placeholder="{{'hc.preferred_location' | translate}}"
+                  formControlName="preferred_location">
+                <mat-error *ngIf="form.controls.preferred_location.errors?.required"> {{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <input matInput placeholder="{{'hc.expected_salary' | translate}}" formControlName="expected_salary"
+                  type="number" min="0.00">
+                <mat-error *ngIf="form.controls.expected_salary.errors?.required"> {{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <input matInput [matDatepicker]="start_date" placeholder="{{'hc.start_date' | translate}}"
+                  [value]="form.controls.start_date.value" formControlName="start_date" (click)="start_date.open()">
+                <mat-datepicker-toggle matSuffix [for]="start_date">
+                  <mat-icon matDatepickerToggleIcon color="primary">today</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker color="primary" #start_date></mat-datepicker>
+                <mat-error *ngIf="form.controls.start_date.errors?.required"> {{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <mat-form-field class="w-90">
+                <textarea matInput placeholder="{{'hc.questions' | translate}}" formControlName="questions"
+                  rows="3"> </textarea>
+                <mat-error *ngIf="form.controls.questions.errors?.required"> {{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div mat-dialog-actions align="center">
+              <button mat-raised-button color="accent" class="mat-elevation-z12" type="button" [disabled]="showLoading">
+                {{'app.cancel' | translate}}
+              </button>
+              <button mat-raised-button color="primary" class="mat-elevation-z12" type="submit"
+                [disabled]="showLoading">
+                {{'app.save' | translate}}
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
