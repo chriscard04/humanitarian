@@ -1,9 +1,12 @@
 {
 	"app": {
+		"add_item": "Agregar Registro",
 		"cancel": "Cancelar",
+		"error_email": "Email inválido",
 		"new_application": "Nueva Aplicación",
 		"required": "Requerido",
 		"save": "Guardar",
+		"send": "Enviar",
 		"yes": "Sí"
 	},
 	"hc": {

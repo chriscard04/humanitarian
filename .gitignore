@@ -278,3 +278,6 @@ node_modules
 *build
 .strapi-updater.json
 .strapi-updater.json
+
+dist
+**/dist/

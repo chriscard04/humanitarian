@@ -33,12 +33,6 @@ export class GlobalFunctions {
         { index: 12, mes: 'DICIEMBRE', month: 'DECEMBER' },
     ];
 
-    getFormFields() {
-        let fields = this.form_fields;
-        console.log(fields)
-        console.log(fields.map(field => {console.log(field)}))
-        return true;
-    }
     getMonths() {
         return this.meses;
     }

@@ -43,8 +43,11 @@ body {
 }
 
 button {
-  color: white !important;
   margin: 5px !important;
+}
+
+.btn-white {
+  color: white !important;
 }
 
 
@@ -57,6 +60,22 @@ a {
   color: white;
   text-decoration: none;
 }
+
+
+
+.w-90 {
+  width: 90%;
+}
+
+.w-97 {
+  width: 97%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+
 
 .radio-spacer {
   flex: 1 1 auto;
@@ -92,4 +111,3 @@ a {
   height: 60px;
   line-height: 60px;
 }
-

@@ -64,12 +64,6 @@ var GlobalFunctions = /** @class */ (function () {
             }
          */
     }
-    GlobalFunctions.prototype.getFormFields = function () {
-        var fields = this.form_fields;
-        console.log(fields);
-        console.log(fields.map(function (field) { console.log(field); }));
-        return true;
-    };
     GlobalFunctions.prototype.getMonths = function () {
         return this.meses;
     };

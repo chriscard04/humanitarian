@@ -3,7 +3,7 @@
 
   <mat-card fxFlex="90" class="center mat-elevation-z4" style="margin-top: 25px; margin-bottom: 25px;">
     <mat-card-header>
-      <mat-card-title> {{'app.new_application' | translate}}</mat-card-title>
+      <mat-card-title style="margin-top: 20px;"> {{'app.new_application' | translate}}</mat-card-title>
     </mat-card-header>
 
     <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
@@ -15,112 +15,171 @@
 
     <mat-card-content>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxFlex="100" fxLayout="column">
+      <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm.value)" fxFlex="100" fxLayout="column">
         <div class="flex-p">
           <div fxLayout="row wrap">
             <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
+              <mat-form-field class="w-97" [appearance]="appearance">
                 <input matInput placeholder="{{'hc.position' | translate}}" formControlName="position">
-                <mat-error *ngIf="form.controls.position.errors?.required"> {{'app.required' | translate}}
+                <mat-error *ngIf="mainForm.controls.position.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
             <div fxFlex="50%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
+              <mat-form-field class="w-90" [appearance]="appearance">
                 <input matInput placeholder="{{'hc.name' | translate}}" formControlName="name">
-                <mat-error *ngIf="form.controls.name.errors?.required">{{'app.required' | translate}}
+                <mat-error *ngIf="mainForm.controls.name.errors?.required">{{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
+              <mat-form-field class="w-90" [appearance]="appearance">
                 <input matInput placeholder="{{'hc.identification' | translate}}" formControlName="identification">
-                <mat-error *ngIf="form.controls.identification.errors?.required">{{'app.required' | translate}}
+                <mat-error *ngIf="mainForm.controls.identification.errors?.required">{{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
+              <mat-form-field class="w-90" [appearance]="appearance">
                 <input matInput placeholder="{{'hc.address' | translate}}" formControlName="address">
-                <mat-error *ngIf="form.controls.address.errors?.required"> {{'app.required' | translate}}
+                <mat-error *ngIf="mainForm.controls.address.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
-                <input matInput placeholder="{{'hc.contact_number' | translate}}" formControlName="contact_number">
-                <mat-error *ngIf="form.controls.contact_number.errors?.required"> {{'app.required' | translate}}
+              <mat-form-field class="w-90" [appearance]="appearance">
+                <input matInput placeholder="{{'hc.contact_number' | translate}}" formControlName="contact_numbers">
+                <mat-error *ngIf="mainForm.controls.contact_numbers.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
-
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
+              <mat-form-field class="w-90" [appearance]="appearance">
                 <input matInput placeholder="{{'hc.email' | translate}}" formControlName="email" type="email">
-                <mat-error *ngIf="form.controls.email.errors?.required">{{'app.required' | translate}}
+                <mat-error *ngIf="mainForm.controls.email.errors?.required">{{'app.required' | translate}}
+                </mat-error>
+                <mat-error *ngIf="mainForm.controls.email.errors?.email">{{'app.error_email' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
-            <mat-form-field class="w-90" floatLabel="always">
+            <!-- E D U C A T I O N  -->
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" formArrayName="education" style="margin-left: 10px;">
+              <h2>{{'hc.education' | translate}}</h2>
+              <!--  <mat-card class="mt-2" *ngFor="let item of education">
+                <p>
+                  {{item.e_degree}} - {{item.e_title}} from {{item.e_year}}
+                </p>
+              </mat-card> -->
+
+              <div *ngFor="let educationItem of education().controls; let i = index;" [formGroupName]="i">
+                <mat-card class="mt-2" fxLayout="row wrap" style="margin: 10px">
+                  <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-90" [appearance]="appearance">
+                      <input matInput placeholder="{{'hc.e_degree' | translate}}" formControlName="e_degree">
+                      <mat-error *ngIf="educationItem.get('e_degree').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-90" [appearance]="appearance">
+                      <input matInput placeholder="{{'hc.e_title' | translate}}" formControlName="e_title">
+                      <mat-error *ngIf="educationItem.get('e_title').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-90" [appearance]="appearance">
+                      <input matInput placeholder="{{'hc.e_year' | translate}}" formControlName="e_year" type="number">
+                      <mat-error *ngIf="educationItem.get('e_year').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="4%" fxFlex.sm="5%" fxFlex.xs="5%">
+                    <button *ngIf="i!=0" mat-mini-fab color="warn" type="button" (click)="removeEducation(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </mat-card>
+
+              </div>
+              <button mat-raised-button color="accent" (click)="addEducation()" type="button"
+                [disabled]="mainForm.controls.education.invalid">
+                {{'app.add_item' | translate}} </button>
+            </div>
+
+            <!-- / E D U C A T I O N  -->
+
+
+
+
+
+
+
+
+            <mat-form-field class="w-90" [appearance]="appearance" floatLabel="always">
               <p>{{'hc.travel' | translate}}</p>
-              <mat-slide-toggle formControlName="travel">{{form.value.travel === true ? ('app.yes' | translate) : 'No'}}
+              <mat-slide-toggle formControlName="travel">
+                {{mainForm.value.travel === true ? ('app.yes' | translate) : 'No'}}
               </mat-slide-toggle>
               <textarea matInput hidden disabled></textarea>
-              <mat-error *ngIf="form.controls.travel.errors?.required">{{'app.required' | translate}}
+              <mat-error *ngIf="mainForm.controls.travel.errors?.required">{{'app.required' | translate}}
               </mat-error>
             </mat-form-field>
 
 
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
+              <mat-form-field class="w-90" [appearance]="appearance">
                 <input matInput placeholder="{{'hc.preferred_location' | translate}}"
                   formControlName="preferred_location">
-                <mat-error *ngIf="form.controls.preferred_location.errors?.required"> {{'app.required' | translate}}
+                <mat-error *ngIf="mainForm.controls.preferred_location.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
+              <mat-form-field class="w-90" [appearance]="appearance">
                 <input matInput placeholder="{{'hc.expected_salary' | translate}}" formControlName="expected_salary"
                   type="number" min="0.00">
-                <mat-error *ngIf="form.controls.expected_salary.errors?.required"> {{'app.required' | translate}}
+                <mat-error *ngIf="mainForm.controls.expected_salary.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
+              <mat-form-field class="w-90" [appearance]="appearance">
                 <input matInput [matDatepicker]="start_date" placeholder="{{'hc.start_date' | translate}}"
-                  [value]="form.controls.start_date.value" formControlName="start_date" (click)="start_date.open()">
+                  [value]="mainForm.controls.start_date.value" formControlName="start_date" (click)="start_date.open()">
                 <mat-datepicker-toggle matSuffix [for]="start_date">
                   <mat-icon matDatepickerToggleIcon color="primary">today</mat-icon>
                 </mat-datepicker-toggle>
                 <mat-datepicker color="primary" #start_date></mat-datepicker>
-                <mat-error *ngIf="form.controls.start_date.errors?.required"> {{'app.required' | translate}}
+                <mat-error *ngIf="mainForm.controls.start_date.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
-              <mat-form-field class="w-90">
+              <mat-form-field class="w-90" [appearance]="appearance">
                 <textarea matInput placeholder="{{'hc.questions' | translate}}" formControlName="questions"
                   rows="3"> </textarea>
-                <mat-error *ngIf="form.controls.questions.errors?.required"> {{'app.required' | translate}}
+                <mat-error *ngIf="mainForm.controls.questions.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" mat-dialog-actions align="center">
-              <button mat-raised-button color="accent" class="mat-elevation-z12" type="button" [disabled]="showLoading">
+              <!--    <button mat-raised-button color="accent" class="mat-elevation-z12" type="button" [disabled]="showLoading">
                 {{'app.cancel' | translate}}
-              </button>
-              <button mat-raised-button color="primary" class="mat-elevation-z12" type="submit"
-                [disabled]="showLoading">
-                {{'app.save' | translate}}
+              </button> -->
+              <button mat-raised-button [ngClass]="!mainForm.invalid ? 'btn-white' : ''" color="primary" type="submit"
+                [disabled]="showLoading || mainForm.invalid">
+                {{'app.send' | translate}}
               </button>
             </div>
 

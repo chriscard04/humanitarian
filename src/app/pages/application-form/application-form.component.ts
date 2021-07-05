@@ -1,17 +1,10 @@
 import { Component, Inject, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatPaginator } from '@angular/material/paginator';
-import { AlertDialogComponent } from '../../../shared/alert_dialog/alert_dialog.component';
 import { WebApi } from '../../security/_services/service';
 import { GlobalFunctions } from '../../../shared/globalFunctions';
-import { DomSanitizer } from '@angular/platform-browser';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
+import { Education } from '../../../shared/models/form-application'
 
 @Component({
   selector: 'app-application-form',
@@ -21,8 +14,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class ApplicationFormComponent implements OnInit {
   public isUpdate: boolean = false;
   public row: any;
-  public form: FormGroup;
+  public mainForm: FormGroup;
   public data: any;
+  public appearance = 'fill'
 
   public title = 'Nuevo registro';
   public previousRow = false;
@@ -36,6 +30,7 @@ export class ApplicationFormComponent implements OnInit {
   public perfiles = [];
   public personas = [];
   public form_fields: any;
+
   constructor(
     public fb: FormBuilder,
     public router: Router,
@@ -44,30 +39,59 @@ export class ApplicationFormComponent implements OnInit {
     private globalFunctions: GlobalFunctions,
   ) {
 
-    this.form = this.fb.group({
-      "position": [null, Validators.required],
+    this.mainForm = this.fb.group({
+      "position": [null],
       "name": [null, Validators.required],
-      "identification": [null, Validators.required],
-      "address": [null, Validators.required],
-      "contact_number": [null, Validators.required],
-      "email": [null, Validators.required],
-      "travel": [false, Validators.required],
-      "expected_salary": [null, Validators.required],
-      "preferred_location": [null, Validators.required],
+      "identification": [null],
+      "address": [null],
+      "contact_numbers": [null],
+      "email": [null, Validators.compose([Validators.email, Validators.required])],
+      "education": this.fb.array([]),
+      "travel": [false],
+      "expected_salary": [null],
+      "preferred_location": [null],
       "start_date": [new Date()],
       "questions": [null],
     });
+
   }
 
   ngOnInit(): void {
     /*     this.service.Get('perfiles').subscribe((result) => {
-          this.perfiles = result;
-        }); */
-    let temp = this.globalFunctions.getFormFields();
+      this.perfiles = result;
+    }); */
+    this.addEducation();
   }
 
+  /* EDUCATION */
+
+  education(): FormArray {
+    return this.mainForm.get("education") as FormArray
+  }
+
+  newEducation(): FormGroup {
+    return this.fb.group({
+      e_degree: [null, Validators.required],
+      e_title: [null, Validators.required],
+      e_year: [null, Validators.required],
+    });
+  }
+
+  addEducation() {
+    this.education().push(this.newEducation());
+  }
+
+  removeEducation(i: number) {
+    this.education().removeAt(i);
+  }
+
+  /* / EDUCATION */
+
+
+
+
   public closeModal(): void {
-    if (this.form.valid) {
+    if (this.mainForm.valid) {
       // this.dialogRef.close();
     }
   }
@@ -76,14 +100,15 @@ export class ApplicationFormComponent implements OnInit {
     this.showLoading = true;
     this.message.show = false;
 
-    if (!this.form.valid) {
-      this.globalFunctions.validateAllFormFields(this.form);
+    if (!this.mainForm.valid) {
+      this.globalFunctions.validateAllFormFields(this.mainForm);
 
       this.message = this.globalFunctions.errorMessage();
       this.showLoading = false;
       return;
     }
 
+    // values.education = { degree: values.education }
     this.service.post('candidates', values).subscribe(result => {
       console.log(result);
 
@@ -91,7 +116,7 @@ export class ApplicationFormComponent implements OnInit {
 
       this.showLoading = false;
 
-      this.form.reset();
+      this.mainForm.reset();
       if (closeModal) {
         // this.dialogRef.close(this.data);
       }
@@ -106,17 +131,17 @@ export class ApplicationFormComponent implements OnInit {
 
 
   setValues(row) {
-    this.form.controls['cod_usuario'].setValue(row.cod_usuario);
-    this.form.controls['usuario_nombre'].setValue(row.usuario_nombre);
-    this.form.controls['contrasena'].setValue(row.contrasena);
-    this.form.controls['cod_perfil'].setValue(row.cod_perfil);
-    this.form.controls['email'].setValue(row.email);
-    this.form.controls['sn_activo'].setValue(row.sn_activo);
+    this.mainForm.controls['cod_usuario'].setValue(row.cod_usuario);
+    this.mainForm.controls['usuario_nombre'].setValue(row.usuario_nombre);
+    this.mainForm.controls['contrasena'].setValue(row.contrasena);
+    this.mainForm.controls['cod_perfil'].setValue(row.cod_perfil);
+    this.mainForm.controls['email'].setValue(row.email);
+    this.mainForm.controls['sn_activo'].setValue(row.sn_activo);
   }
 
   ngAfterViewInit() {
     //  this.settings.loadingSpinner = false;
-    this.checkControlButtons();
+    // this.checkControlButtons();
   }
 
   checkControlButtons() {

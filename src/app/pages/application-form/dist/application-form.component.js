@@ -17,6 +17,7 @@ var ApplicationFormComponent = /** @class */ (function () {
         this.service = service;
         this.globalFunctions = globalFunctions;
         this.isUpdate = false;
+        this.appearance = 'fill';
         this.title = 'Nuevo registro';
         this.previousRow = false;
         this.nextRow = false;
@@ -28,28 +29,47 @@ var ApplicationFormComponent = /** @class */ (function () {
         this.showLoading = false;
         this.perfiles = [];
         this.personas = [];
-        this.form = this.fb.group({
-            "position": [null, forms_1.Validators.required],
+        this.mainForm = this.fb.group({
+            "position": [null],
             "name": [null, forms_1.Validators.required],
-            "identification": [null, forms_1.Validators.required],
-            "address": [null, forms_1.Validators.required],
-            "contact_number": [null, forms_1.Validators.required],
-            "email": [null, forms_1.Validators.required],
-            "travel": [false, forms_1.Validators.required],
-            "expected_salary": [null, forms_1.Validators.required],
-            "preferred_location": [null, forms_1.Validators.required],
+            "identification": [null],
+            "address": [null],
+            "contact_numbers": [null],
+            "email": [null, forms_1.Validators.compose([forms_1.Validators.email, forms_1.Validators.required])],
+            "education": this.fb.array([]),
+            "travel": [false],
+            "expected_salary": [null],
+            "preferred_location": [null],
             "start_date": [new Date()],
             "questions": [null]
         });
     }
     ApplicationFormComponent.prototype.ngOnInit = function () {
         /*     this.service.Get('perfiles').subscribe((result) => {
-              this.perfiles = result;
-            }); */
-        var temp = this.globalFunctions.getFormFields();
+          this.perfiles = result;
+        }); */
+        this.addEducation();
     };
+    /* EDUCATION */
+    ApplicationFormComponent.prototype.education = function () {
+        return this.mainForm.get("education");
+    };
+    ApplicationFormComponent.prototype.newEducation = function () {
+        return this.fb.group({
+            e_degree: [null, forms_1.Validators.required],
+            e_title: [null, forms_1.Validators.required],
+            e_year: [null, forms_1.Validators.required]
+        });
+    };
+    ApplicationFormComponent.prototype.addEducation = function () {
+        this.education().push(this.newEducation());
+    };
+    ApplicationFormComponent.prototype.removeEducation = function (i) {
+        this.education().removeAt(i);
+    };
+    /* / EDUCATION */
     ApplicationFormComponent.prototype.closeModal = function () {
-        if (this.form.valid) {
+        if (this.mainForm.valid) {
             // this.dialogRef.close();
         }
     };
@@ -58,17 +78,18 @@ var ApplicationFormComponent = /** @class */ (function () {
         if (closeModal === void 0) { closeModal = false; }
         this.showLoading = true;
         this.message.show = false;
-        if (!this.form.valid) {
-            this.globalFunctions.validateAllFormFields(this.form);
+        if (!this.mainForm.valid) {
+            this.globalFunctions.validateAllFormFields(this.mainForm);
             this.message = this.globalFunctions.errorMessage();
             this.showLoading = false;
             return;
         }
+        // values.education = { degree: values.education }
         this.service.post('candidates', values).subscribe(function (result) {
             console.log(result);
             _this.message = _this.globalFunctions.successMessage();
             _this.showLoading = false;
-            _this.form.reset();
+            _this.mainForm.reset();
             if (closeModal) {
                 // this.dialogRef.close(this.data);
             }
@@ -78,16 +99,16 @@ var ApplicationFormComponent = /** @class */ (function () {
         });
     };
     ApplicationFormComponent.prototype.setValues = function (row) {
-        this.form.controls['cod_usuario'].setValue(row.cod_usuario);
-        this.form.controls['usuario_nombre'].setValue(row.usuario_nombre);
-        this.form.controls['contrasena'].setValue(row.contrasena);
-        this.form.controls['cod_perfil'].setValue(row.cod_perfil);
-        this.form.controls['email'].setValue(row.email);
-        this.form.controls['sn_activo'].setValue(row.sn_activo);
+        this.mainForm.controls['cod_usuario'].setValue(row.cod_usuario);
+        this.mainForm.controls['usuario_nombre'].setValue(row.usuario_nombre);
+        this.mainForm.controls['contrasena'].setValue(row.contrasena);
+        this.mainForm.controls['cod_perfil'].setValue(row.cod_perfil);
+        this.mainForm.controls['email'].setValue(row.email);
+        this.mainForm.controls['sn_activo'].setValue(row.sn_activo);
     };
     ApplicationFormComponent.prototype.ngAfterViewInit = function () {
         //  this.settings.loadingSpinner = false;
-        this.checkControlButtons();
+        // this.checkControlButtons();
     };
     ApplicationFormComponent.prototype.checkControlButtons = function () {
         // ACTIVAR O DESACTIVAR BOTONES ATRAS Y SIGUIENTE

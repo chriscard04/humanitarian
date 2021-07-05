@@ -1,9 +1,12 @@
 {
 	"app": {
+		"add_item": "Add Item",
 		"cancel": "Cancel",
+		"error_email": "Invalid Email",
 		"new_application": "New Application",
 		"required": "Required",
 		"save": "Save",
+		"send": "Send",
 		"yes": "Yes"
 	},
 	"hc": {
