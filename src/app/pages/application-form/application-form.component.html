@@ -1,65 +1,75 @@
 <div style="margin-bottom: 10px;">
 
 
+
   <mat-card fxFlex="90" class="center mat-elevation-z4" style="margin-top: 25px; margin-bottom: 25px;">
+    <mat-card [class.my-primary]="message.status=='primary'" [class.my-accent]="message.status=='accent'"
+      [class.my-warn]="message.status=='warn'" *ngIf="message.show">
+      {{message.text}}
+    </mat-card>
     <mat-card-header>
-      <mat-card-title style="margin-top: 20px;"> {{'app.new_application' | translate}}</mat-card-title>
+      <mat-card-title style="margin-top: 20px;">
+        <h1>
+          {{'app.new_application' | translate}}
+        </h1>
+      </mat-card-title>
     </mat-card-header>
 
     <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
-
-    <mat-card [class.bg-primary]="message.status=='primary'" [class.bg-accent]="message.status=='accent'"
-      [class.bg-warn]="message.status=='warn'" *ngIf="message.show">
-      {{message.text}}
-    </mat-card>
 
     <mat-card-content>
 
       <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm.value)" fxFlex="100" fxLayout="column">
         <div class="flex-p">
           <div fxLayout="row wrap">
-            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
-              <mat-form-field class="w-97" [appearance]="appearance">
-                <input matInput placeholder="{{'hc.position' | translate}}" formControlName="position">
+            <div fxFlex="75%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <mat-form-field class="w-100" [appearance]="appearance">
+                <mat-label>{{'hc.position' | translate}}</mat-label>
+                <input matInput placeholder="" formControlName="position">
                 <mat-error *ngIf="mainForm.controls.position.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
             <div fxFlex="50%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90" [appearance]="appearance">
-                <input matInput placeholder="{{'hc.name' | translate}}" formControlName="name">
+              <mat-form-field class="w-97" [appearance]="appearance">
+                <mat-label>{{'hc.name' | translate}}</mat-label>
+                <input matInput placeholder="" formControlName="name">
                 <mat-error *ngIf="mainForm.controls.name.errors?.required">{{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90" [appearance]="appearance">
-                <input matInput placeholder="{{'hc.identification' | translate}}" formControlName="identification">
+              <mat-form-field class="w-97" [appearance]="appearance">
+                <mat-label>{{'hc.identification' | translate}}</mat-label>
+                <input matInput placeholder="" formControlName="identification">
                 <mat-error *ngIf="mainForm.controls.identification.errors?.required">{{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90" [appearance]="appearance">
-                <input matInput placeholder="{{'hc.address' | translate}}" formControlName="address">
+              <mat-form-field class="w-97" [appearance]="appearance">
+                <mat-label>{{'hc.address' | translate}}</mat-label>
+                <input matInput placeholder="" formControlName="address">
                 <mat-error *ngIf="mainForm.controls.address.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90" [appearance]="appearance">
-                <input matInput placeholder="{{'hc.contact_number' | translate}}" formControlName="contact_numbers">
+              <mat-form-field class="w-97" [appearance]="appearance">
+                <mat-label>{{'hc.contact_number' | translate}}</mat-label>
+                <input matInput placeholder="" formControlName="contact_numbers">
                 <mat-error *ngIf="mainForm.controls.contact_numbers.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90" [appearance]="appearance">
-                <input matInput placeholder="{{'hc.email' | translate}}" formControlName="email" type="email">
+              <mat-form-field class="w-97" [appearance]="appearance">
+                <mat-label>{{'hc.email' | translate}}</mat-label>
+                <input matInput placeholder="" formControlName="email" type="email">
                 <mat-error *ngIf="mainForm.controls.email.errors?.required">{{'app.required' | translate}}
                 </mat-error>
                 <mat-error *ngIf="mainForm.controls.email.errors?.email">{{'app.error_email' | translate}}
@@ -67,36 +77,37 @@
               </mat-form-field>
             </div>
 
-            <!-- E D U C A T I O N  -->
-            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" formArrayName="education" style="margin-left: 10px;">
-              <h2>{{'hc.education' | translate}}</h2>
-              <!--  <mat-card class="mt-2" *ngFor="let item of education">
-                <p>
-                  {{item.e_degree}} - {{item.e_title}} from {{item.e_year}}
-                </p>
-              </mat-card> -->
 
+            <br>
+
+            <!-- E D U C A T I O N  -->
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" formArrayName="education"
+              style="margin-left: 10px; margin-bottom: 10px;">
+              <h2>{{'hc.education' | translate}}</h2>
               <div *ngFor="let educationItem of education().controls; let i = index;" [formGroupName]="i">
                 <mat-card class="mt-2" fxLayout="row wrap" style="margin: 10px">
                   <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
-                    <mat-form-field class="w-90" [appearance]="appearance">
-                      <input matInput placeholder="{{'hc.e_degree' | translate}}" formControlName="e_degree">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.e_degree' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="e_degree">
                       <mat-error *ngIf="educationItem.get('e_degree').errors?.required">
                         {{'app.required' | translate}}
                       </mat-error>
                     </mat-form-field>
                   </div>
                   <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
-                    <mat-form-field class="w-90" [appearance]="appearance">
-                      <input matInput placeholder="{{'hc.e_title' | translate}}" formControlName="e_title">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.e_title' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="e_title">
                       <mat-error *ngIf="educationItem.get('e_title').errors?.required">
                         {{'app.required' | translate}}
                       </mat-error>
                     </mat-form-field>
                   </div>
                   <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
-                    <mat-form-field class="w-90" [appearance]="appearance">
-                      <input matInput placeholder="{{'hc.e_year' | translate}}" formControlName="e_year" type="number">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.e_year' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="e_year" type="number">
                       <mat-error *ngIf="educationItem.get('e_year').errors?.required">
                         {{'app.required' | translate}}
                       </mat-error>
@@ -108,15 +119,274 @@
                     </button>
                   </div>
                 </mat-card>
-
               </div>
               <button mat-raised-button color="accent" (click)="addEducation()" type="button"
                 [disabled]="mainForm.controls.education.invalid">
                 {{'app.add_item' | translate}} </button>
             </div>
-
             <!-- / E D U C A T I O N  -->
 
+            <br>
+            <!-- W O R K   E X P E R I E N C  E  -->
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" formArrayName="work_experience"
+              style="margin-left: 10px;">
+              <h2>{{'hc.work_experience' | translate}}</h2>
+              <div *ngFor="let workExperienceItem of work_experience().controls; let i = index;" [formGroupName]="i">
+                <mat-card class="mt-2" fxLayout="row wrap" style="margin: 10px">
+                  <div fxFlex="45%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.w_country' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="w_country">
+                      <mat-error *ngIf="workExperienceItem.get('w_country').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.w_area' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="w_area">
+                      <mat-error *ngIf="workExperienceItem.get('w_area').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="5%" fxFlex.sm="5%" fxFlex.xs="5%">
+                    <button *ngIf="i!=0" mat-mini-fab color="warn" type="button" (click)="removeWorkExperience(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </mat-card>
+              </div>
+              <button mat-raised-button color="accent" (click)="addWorkExperience()" type="button"
+                [disabled]="mainForm.controls.work_experience.invalid">
+                {{'app.add_item' | translate}} </button>
+            </div>
+            <!-- / W O R K   E X P E R I E N C  E  -->
+
+            <br>
+
+            <!-- T H E M A T I C   E X P E R I E N C E  -->
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" formArrayName="thematic_experience"
+              style="margin-left: 10px; margin-bottom: 10px;">
+              <h2>{{'hc.thematic_experience' | translate}}</h2>
+              <div *ngFor="let thematicExperienceItem of thematic_experience().controls; let i = index;"
+                [formGroupName]="i">
+                <mat-card class="mt-2" fxLayout="row wrap" style="margin: 10px">
+                  <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.t_area' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="t_area">
+                      <mat-error *ngIf="thematicExperienceItem.get('t_area').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.t_project' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="t_project">
+                      <mat-error *ngIf="thematicExperienceItem.get('t_project').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.t_position' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="t_position">
+                      <mat-error *ngIf="thematicExperienceItem.get('t_position').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="4%" fxFlex.sm="5%" fxFlex.xs="5%">
+                    <button *ngIf="i!=0" mat-mini-fab color="warn" type="button" (click)="removeThematicExperience(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </mat-card>
+              </div>
+              <button mat-raised-button color="accent" (click)="addThematicExperience()" type="button"
+                [disabled]="mainForm.controls.thematic_experience.invalid">
+                {{'app.add_item' | translate}} </button>
+            </div>
+            <!-- / T H E M A T I C   E X P E R I E N C E  -->
+
+            <br>
+
+            <!-- C O N S U L T A N C I E S  -->
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" formArrayName="consultancies"
+              style="margin-left: 10px;">
+              <h2>{{'hc.consultancies' | translate}}</h2>
+              <div *ngFor="let consultancyItem of consultancies().controls; let i = index;" [formGroupName]="i">
+                <mat-card class="mt-2" fxLayout="row wrap" style="margin: 10px">
+                  <div fxFlex="45%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance" floatLabel="always">
+                      <mat-label>{{'hc.c_years_title' | translate}}</mat-label>
+                      <p>{{'hc.c_years' | translate}}</p>
+                      <input matInput placeholder="" formControlName="c_years" type="number">
+                      <mat-error *ngIf="consultancyItem.get('c_years').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance" floatLabel="always">
+                      <mat-label>{{'hc.c_contributions_title' | translate}}</mat-label>
+                      <textarea matInput placeholder="{{'hc.c_contributions' | translate}}"
+                        formControlName="c_contributions" rows="4"> </textarea>
+                      <mat-error *ngIf="consultancyItem.get('c_contributions').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="5%" fxFlex.sm="5%" fxFlex.xs="5%">
+                    <button *ngIf="i!=0" mat-mini-fab color="warn" type="button" (click)="removeConsultancies(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </mat-card>
+              </div>
+              <button mat-raised-button color="accent" (click)="addConsultancies()" type="button"
+                [disabled]="mainForm.controls.consultancies.invalid">
+                {{'app.add_item' | translate}} </button>
+            </div>
+            <!-- / C O N S U L T A N C I E S  -->
+
+            <br>
+
+
+            <!-- G L O B A L   A W A R D S  
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" formArrayName="global_awards"
+              style="margin-left: 10px;">
+              <h2>{{'hc.global_awards' | translate}}</h2>
+              <div *ngFor="let global_awards of global_awards().controls; let i = index;" [formGroupName]="i">
+                <mat-card class="mt-2" fxLayout="row wrap" style="margin: 10px">
+                  <div fxFlex="40%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.g_us_years' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="g_us_years" type="number" min="0">
+                      <mat-error *ngIf="global_awards.get('g_us_years').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="40%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance" floatLabel="always">
+                      <mat-label>{{'hc.g_us_agency' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="g_us_agency">
+                      <mat-error *ngIf="global_awards.get('g_us_agency').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="5%" fxFlex.sm="5%" fxFlex.xs="5%">
+                    <button *ngIf="i!=0" mat-mini-fab color="warn" type="button" (click)="removeWorkExperience(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </mat-card>
+              </div>
+
+              <button mat-raised-button color="accent" (click)="addWorkExperience()" type="button"
+                [disabled]="mainForm.controls.global_awards.invalid">
+                {{'app.add_item' | translate}} </button>
+            </div>
+            -->
+            <!-- / G L O B A L   A W A R D S  -->
+
+            <br>
+
+            <!-- L A N G U A G E S  -->
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" formArrayName="languages" style="margin-left: 10px;">
+              <h2>{{'hc.languages' | translate}}</h2>
+              <p style="font-style: italic; color: gray;">*{{'hc.spanish_required' | translate}}</p>
+              <div *ngFor="let languageItem of languages().controls; let i = index;" [formGroupName]="i">
+                <mat-card class="mt-2" fxLayout="row wrap" style="margin: 10px">
+                  <div fxFlex="40%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.l_language' | translate}}</mat-label>
+                      <input matInput placeholder="" formControlName="l_language">
+                      <mat-error *ngIf="languageItem.get('l_language').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="40%" fxFlex.sm="50%" fxFlex.xs="100%">
+                    <mat-form-field class="w-97" [appearance]="appearance">
+                      <mat-label>{{'hc.l_level' | translate}}</mat-label>
+
+                      <mat-select matInput placeholder="" formControlName="l_level">
+                        <mat-option value="basic">{{'app.level_basic' | translate}}</mat-option>
+                        <mat-option value="elementary">{{'app.level_elementary' | translate}}</mat-option>
+                        <mat-option value="intermediate">{{'app.level_intermediate' | translate}}</mat-option>
+                        <mat-option value="advanced">{{'app.level_advanced' | translate}}</mat-option>
+                        <mat-option value="native">{{'app.level_native' | translate}}</mat-option>
+                      </mat-select>
+
+                      <mat-error *ngIf="languageItem.get('l_level').errors?.required">
+                        {{'app.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="5%" fxFlex.sm="5%" fxFlex.xs="5%">
+                    <button *ngIf="i!=0" mat-mini-fab color="warn" type="button" (click)="removeLanguages(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </mat-card>
+              </div>
+              <button mat-raised-button color="accent" (click)="addLanguages()" type="button"
+                [disabled]="mainForm.controls.languages.invalid">
+                {{'app.add_item' | translate}} </button>
+            </div>
+            <!-- / L A N G U A G E S  -->
+            <br>
+
+
+
+
+            <!-- F I L E S -->
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" style="margin-left: 10px; margin-bottom: 10px;">
+              <h2>{{'hc.attachments' | translate}}</h2>
+
+              <mat-card class="mt-2" fxLayout="row wrap" style="margin: 10px">
+                <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
+                  <h3>{{'hc.files_passport' | translate}}</h3>
+                  <div class="w-97">
+                    <p *ngIf="passportFile" class="truncate">{{ passportFile.name }}</p>
+                    <input #passportFileID hidden="true" (change)="passportFile = $event.target.files[0];" type="file"
+                      accept=".pdf" />
+                    <button mat-raised-button color="accent" (click)="passportFileID.click()"
+                      type="button">{{'app.select_file' | translate}}</button>
+                  </div>
+                </div>
+                <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
+                  <h3>{{'hc.files_visa' | translate}}</h3>
+                  <div class="w-97">
+                    <p *ngIf="visaFile">{{ visaFile.name }}</p>
+                    <input #visaFileID hidden="true" (change)="visaFile = $event.target.files[0];" type="file"
+                      accept=".pdf" />
+                    <button mat-raised-button color="accent" (click)="visaFileID.click()"
+                      type="button">{{'app.select_file' | translate}}</button>
+                  </div>
+                </div>
+                <div fxFlex="32%" fxFlex.sm="50%" fxFlex.xs="100%">
+                  <h3>{{'hc.files_picture' | translate}}</h3>
+                  <div class="w-97">
+                    <p *ngIf="pictureFile">{{ pictureFile.name }}</p>
+                    <input #pictureFileID hidden="true" (change)="pictureFile = $event.target.files[0];" type="file"
+                      accept="image/*" />
+                    <button mat-raised-button color="accent" (click)="pictureFileID.click()"
+                      type="button">{{'app.select_file' | translate}}</button>
+                    <p style="font-style: italic;">{{'hc.files_picture_desc' | translate}}</p>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+
+            <!-- / F I L E S  -->
 
 
 
@@ -124,37 +394,39 @@
 
 
 
-            <mat-form-field class="w-90" [appearance]="appearance" floatLabel="always">
-              <p>{{'hc.travel' | translate}}</p>
-              <mat-slide-toggle formControlName="travel">
-                {{mainForm.value.travel === true ? ('app.yes' | translate) : 'No'}}
-              </mat-slide-toggle>
-              <textarea matInput hidden disabled></textarea>
-              <mat-error *ngIf="mainForm.controls.travel.errors?.required">{{'app.required' | translate}}
-              </mat-error>
-            </mat-form-field>
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <mat-form-field class="w-97" [appearance]="appearance" floatLabel="always">
+                <p>{{'hc.travel' | translate}}</p>
+                <mat-slide-toggle formControlName="travel">
+                  {{mainForm.value.travel === true ? ('app.yes' | translate) : 'No'}}
+                </mat-slide-toggle>
+                <textarea matInput hidden disabled></textarea>
+                <mat-error *ngIf="mainForm.controls.travel.errors?.required">{{'app.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
 
-
-            <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90" [appearance]="appearance">
-                <input matInput placeholder="{{'hc.preferred_location' | translate}}"
-                  formControlName="preferred_location">
+            <div fxFlex="40%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-97" [appearance]="appearance">
+                <mat-label>{{'hc.preferred_location' | translate}}</mat-label>
+                <input matInput placeholder="" formControlName="preferred_location">
                 <mat-error *ngIf="mainForm.controls.preferred_location.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
-            <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90" [appearance]="appearance">
-                <input matInput placeholder="{{'hc.expected_salary' | translate}}" formControlName="expected_salary"
-                  type="number" min="0.00">
+            <div fxFlex="35%" fxFlex.sm="50%" fxFlex.xs="100%">
+              <mat-form-field class="w-97" [appearance]="appearance">
+                <mat-label>{{'hc.expected_salary' | translate}}</mat-label>
+                <input matInput placeholder="" formControlName="expected_salary" type="number" min="0.00">
                 <mat-error *ngIf="mainForm.controls.expected_salary.errors?.required"> {{'app.required' | translate}}
                 </mat-error>
               </mat-form-field>
             </div>
             <div fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%">
-              <mat-form-field class="w-90" [appearance]="appearance">
-                <input matInput [matDatepicker]="start_date" placeholder="{{'hc.start_date' | translate}}"
-                  [value]="mainForm.controls.start_date.value" formControlName="start_date" (click)="start_date.open()">
+              <mat-form-field class="w-97" [appearance]="appearance" floatLabel="always">
+                <mat-label>{{'hc.start_date' | translate}}</mat-label>
+                <input matInput [matDatepicker]="start_date" [value]="mainForm.controls.start_date.value"
+                  formControlName="start_date" (click)="start_date.open()" [min]="minDate">
                 <mat-datepicker-toggle matSuffix [for]="start_date">
                   <mat-icon matDatepickerToggleIcon color="primary">today</mat-icon>
                 </mat-datepicker-toggle>
@@ -164,8 +436,9 @@
               </mat-form-field>
             </div>
 
-            <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
-              <mat-form-field class="w-90" [appearance]="appearance">
+            <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <mat-form-field class="w-97" [appearance]="appearance" floatLabel="always">
+                <mat-label>{{'hc.questions_title' | translate}}</mat-label>
                 <textarea matInput placeholder="{{'hc.questions' | translate}}" formControlName="questions"
                   rows="3"> </textarea>
                 <mat-error *ngIf="mainForm.controls.questions.errors?.required"> {{'app.required' | translate}}
@@ -174,9 +447,6 @@
             </div>
 
             <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" mat-dialog-actions align="center">
-              <!--    <button mat-raised-button color="accent" class="mat-elevation-z12" type="button" [disabled]="showLoading">
-                {{'app.cancel' | translate}}
-              </button> -->
               <button mat-raised-button [ngClass]="!mainForm.invalid ? 'btn-white' : ''" color="primary" type="submit"
                 [disabled]="showLoading || mainForm.invalid">
                 {{'app.send' | translate}}

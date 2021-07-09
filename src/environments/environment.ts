@@ -6,9 +6,10 @@ export const environment = {
   production: false,
   /*endPoint: 'http://sap.amcross.org:1337/',
   loginUrl: 'http://sap.amcross.org:1337/auth/local/'
-
-   endPoint: 'http://test.amcross.org:1337/',
-   loginUrl: 'http://test.amcross.org:1337/auth/local/' */
+ */
+  /*  endPoint: 'http://localhost:1337/',
+ loginUrl: 'http://localhost:1337/auth/local/' */
+ 
   endPoint: 'https://humanitarian-api.herokuapp.com/',
   loginUrl: 'https://humanitarian-api.herokuapp.com/auth/local/'
 

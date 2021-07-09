@@ -29,16 +29,25 @@ var ApplicationFormComponent = /** @class */ (function () {
         this.showLoading = false;
         this.perfiles = [];
         this.personas = [];
+        this.passportFile = null;
+        this.visaFile = null;
+        this.pictureFile = null;
+        this.minDate = new Date();
         this.mainForm = this.fb.group({
             "position": [null],
             "name": [null, forms_1.Validators.required],
-            "identification": [null],
-            "address": [null],
+            "identification": [null, forms_1.Validators.required],
+            "address": [null, forms_1.Validators.required],
             "contact_numbers": [null],
             "email": [null, forms_1.Validators.compose([forms_1.Validators.email, forms_1.Validators.required])],
             "education": this.fb.array([]),
+            "work_experience": this.fb.array([]),
+            "thematic_experience": this.fb.array([]),
+            "consultancies": this.fb.array([]),
+            "global_awards": this.fb.array([]),
+            "languages": this.fb.array([]),
             "travel": [false],
-            "expected_salary": [null],
+            "expected_salary": [null, forms_1.Validators.required],
             "preferred_location": [null],
             "start_date": [new Date()],
             "questions": [null]
@@ -49,6 +58,10 @@ var ApplicationFormComponent = /** @class */ (function () {
           this.perfiles = result;
         }); */
         this.addEducation();
+        this.addWorkExperience();
+        this.addThematicExperience();
+        this.addConsultancies();
+        this.addLanguages();
     };
     /* EDUCATION */
     ApplicationFormComponent.prototype.education = function () {
@@ -68,6 +81,75 @@ var ApplicationFormComponent = /** @class */ (function () {
         this.education().removeAt(i);
     };
     /* / EDUCATION */
+    /* WORK EXPERIENCE */
+    ApplicationFormComponent.prototype.work_experience = function () {
+        return this.mainForm.get("work_experience");
+    };
+    ApplicationFormComponent.prototype.newWorkExperience = function () {
+        return this.fb.group({
+            w_country: [null, forms_1.Validators.required],
+            w_area: [null]
+        });
+    };
+    ApplicationFormComponent.prototype.addWorkExperience = function () {
+        this.work_experience().push(this.newWorkExperience());
+    };
+    ApplicationFormComponent.prototype.removeWorkExperience = function (i) {
+        this.work_experience().removeAt(i);
+    };
+    /* / WORK EXPERIENCE  */
+    /* THEMATIC EXPERIENCE */
+    ApplicationFormComponent.prototype.thematic_experience = function () {
+        return this.mainForm.get("thematic_experience");
+    };
+    ApplicationFormComponent.prototype.newThematicExperience = function () {
+        return this.fb.group({
+            t_area: [null, forms_1.Validators.required],
+            t_project: [null, forms_1.Validators.required],
+            t_position: [null]
+        });
+    };
+    ApplicationFormComponent.prototype.addThematicExperience = function () {
+        this.thematic_experience().push(this.newThematicExperience());
+    };
+    ApplicationFormComponent.prototype.removeThematicExperience = function (i) {
+        this.thematic_experience().removeAt(i);
+    };
+    /* / THEMATIC EXPERIENCE  */
+    /* CONSULTANCIES */
+    ApplicationFormComponent.prototype.consultancies = function () {
+        return this.mainForm.get("consultancies");
+    };
+    ApplicationFormComponent.prototype.newConsultancy = function () {
+        return this.fb.group({
+            c_years: [null, forms_1.Validators.required],
+            c_contributions: [null]
+        });
+    };
+    ApplicationFormComponent.prototype.addConsultancies = function () {
+        this.consultancies().push(this.newConsultancy());
+    };
+    ApplicationFormComponent.prototype.removeConsultancies = function (i) {
+        this.consultancies().removeAt(i);
+    };
+    /* / CONSULTANCIES  */
+    /* LANGUAGES */
+    ApplicationFormComponent.prototype.languages = function () {
+        return this.mainForm.get("languages");
+    };
+    ApplicationFormComponent.prototype.newLanguage = function () {
+        return this.fb.group({
+            l_language: [null, forms_1.Validators.required],
+            l_level: [null, forms_1.Validators.required]
+        });
+    };
+    ApplicationFormComponent.prototype.addLanguages = function () {
+        this.languages().push(this.newLanguage());
+    };
+    ApplicationFormComponent.prototype.removeLanguages = function (i) {
+        this.languages().removeAt(i);
+    };
+    /* / LANGUAGES  */
     ApplicationFormComponent.prototype.closeModal = function () {
         if (this.mainForm.valid) {
             // this.dialogRef.close();
@@ -84,8 +166,19 @@ var ApplicationFormComponent = /** @class */ (function () {
             this.showLoading = false;
             return;
         }
+        var formData = new FormData();
+        formData.append("data", JSON.stringify(values));
+        if (this.passportFile) {
+            formData.append("files.passport", this.passportFile);
+        }
+        if (this.visaFile) {
+            formData.append("files.visa", this.visaFile);
+        }
+        if (this.pictureFile) {
+            formData.append("files.picture", this.pictureFile);
+        }
         // values.education = { degree: values.education }
-        this.service.post('candidates', values).subscribe(function (result) {
+        this.service.post('candidates', formData).subscribe(function (result) {
             console.log(result);
             _this.message = _this.globalFunctions.successMessage();
             _this.showLoading = false;

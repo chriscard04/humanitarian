@@ -43,6 +43,14 @@ mat-card {
 
 }
 
-.mat-form-field{
+.mat-form-field {
   margin: 10px !important;
+}
+
+
+.truncate {
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
