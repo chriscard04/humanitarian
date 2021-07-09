@@ -1,16 +1,15 @@
 {
   "name": "humanitarian-web-app",
   "private": true,
-  "version": "1.7.1",
-  "description": "Proyecto bajo la Iniciativa de Orlando Mendieta para impulsar la iniciativa ~Chepo, Cultura y Tradición~",
+  "version": "1.0.7",
+  "description": "A Humanitarian Consultants Project",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "e2e": "ng e2e"
   },
   "dependencies": {
     "@angular/animations": "~9.1.6",
@@ -24,21 +23,19 @@
     "@angular/platform-browser": "^9.1.13",
     "@angular/platform-browser-dynamic": "^9.1.13",
     "@angular/router": "~9.1.6",
-    "@ngmodule/material-carousel": "^0.6.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@swimlane/ngx-datatable": "17.1.0",
     "@types/d3-sankey": "^0.11.1",
     "angular-google-charts": "^2.1.0",
     "angular-gtag": "^1.0.4",
-    "bootstrap": "^5.0.1",
+    "bootstrap": "^5.0.2",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "d3-sankey": "^0.12.3",
     "d3-sankey-diagram": "^0.8.0",
     "d3v4": "^4.2.2",
     "hover.css": "^2.3.2",
-    "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.31",
     "ngx-pagination": "^5.0.0",
@@ -46,10 +43,11 @@
     "rss-parser": "^3.9.0",
     "rxjs": "~6.5.4",
     "secure-web-storage": "^1.0.2",
+    "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1002.3",
+    "@angular-devkit/build-angular": "~0.901.5",
     "@angular/cli": "^9.1.12",
     "@angular/compiler-cli": "~9.1.6",
     "@types/jasmine": "~3.5.0",
@@ -73,7 +71,7 @@
   },
   "author": {
     "name": "Christofher Cardenas",
-    "email": "chriscard11@gmail.com",
+    "email": "chris@humanitarianconsultants.org",
     "url": "https://www.linkedin.com/in/chriscard11/"
   },
   "license": "MIT"

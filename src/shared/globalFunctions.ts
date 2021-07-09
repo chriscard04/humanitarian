@@ -1,6 +1,5 @@
 import { FormGroup, FormControl } from "@angular/forms";
 import { Injectable } from '@angular/core';
-import FormFields from '../assets/data/form_fields.json';
 
 // imports Excel:
 // import * as FileSaver from 'file-saver';
@@ -16,7 +15,6 @@ interface Month {
 @Injectable()
 export class GlobalFunctions {
     private headers: string[] = [];
-    private form_fields = FormFields;
 
     private meses: Month[] = [
         { index: 1, mes: 'ENERO', month: 'JANUARY' },

@@ -7,8 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 // Additional components
-import { MatCarouselModule } from '@ngmodule/material-carousel';
-import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+/* import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel'; */
 import { MatNativeDateModule } from '@angular/material/core';
 
 //Angular Material Components
@@ -92,7 +92,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MatBadgeModule,
     NgxDatatableModule,
     GoogleChartsModule,
-    MatCarouselModule,
+    // MatCarouselModule,
     TranslateModule
 
   ],
@@ -135,8 +135,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
     ConfirmationDialogComponent,
     NgxDatatableModule,
     GoogleChartsModule,
-    MatCarouselModule,
-    MatCarouselComponent,
+    /*     MatCarouselModule,
+        MatCarouselComponent, */
     TranslateModule
   ],
   declarations: [
