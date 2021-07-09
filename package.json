@@ -2,7 +2,7 @@
   "name": "humanitarian-web-app",
   "private": true,
   "version": "1.7.1",
-  "description": "A Humanitarian Consultants Project",
+  "description": "Proyecto bajo la Iniciativa de Orlando Mendieta para impulsar la iniciativa ~Chepo, Cultura y Tradición~",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -31,7 +31,7 @@
     "@types/d3-sankey": "^0.11.1",
     "angular-google-charts": "^2.1.0",
     "angular-gtag": "^1.0.4",
-    "bootstrap": "^5.0.1",
+    "bootstrap": "^4.5.3",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "d3-sankey": "^0.12.3",
