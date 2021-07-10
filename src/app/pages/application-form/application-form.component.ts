@@ -212,6 +212,10 @@ export class ApplicationFormComponent implements OnInit {
       this.message = this.globalFunctions.successMessage();
 
       this.showLoading = false;
+      setTimeout(() => {
+        this.message.show = false;
+        this.router.navigate(['home']);
+      }, 2000);
 
       this.mainForm.reset();
       if (closeModal) {

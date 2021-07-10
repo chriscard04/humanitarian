@@ -182,6 +182,10 @@ var ApplicationFormComponent = /** @class */ (function () {
             console.log(result);
             _this.message = _this.globalFunctions.successMessage();
             _this.showLoading = false;
+            setTimeout(function () {
+                _this.message.show = false;
+                _this.router.navigate(['home']);
+            }, 2000);
             _this.mainForm.reset();
             if (closeModal) {
                 // this.dialogRef.close(this.data);

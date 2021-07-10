@@ -452,10 +452,18 @@
                 {{'app.send' | translate}}
               </button>
             </div>
-
           </div>
+
+
+
         </div>
       </form>
     </mat-card-content>
+    <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
+    
+    <mat-card [class.my-primary]="message.status=='primary'" [class.my-accent]="message.status=='accent'"
+      [class.my-warn]="message.status=='warn'" *ngIf="message.show">
+      {{message.text}}
+    </mat-card>
   </mat-card>
 </div>
