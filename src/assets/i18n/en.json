@@ -3,6 +3,7 @@
 		"add_item": "Add Item",
 		"cancel": "Cancel",
 		"error_email": "Invalid Email",
+		"hint_number": "Include country code",
 		"level_advanced": "Advanced",
 		"level_basic": "Basic",
 		"level_elementary": "Elementary",

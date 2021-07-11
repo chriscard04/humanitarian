@@ -3,6 +3,7 @@
 		"add_item": "Agregar Registro",
 		"cancel": "Cancelar",
 		"error_email": "Email inválido",
+		"hint_number": "Incluir código país",
 		"level_advanced": "Avanzado",
 		"level_basic": "Básico",
 		"level_elementary": "Elemental",
