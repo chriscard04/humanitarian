@@ -9,7 +9,7 @@ import { ContactService } from './contact.service';
 export const routes = [
   {
     path: '',
-    data: { title: 'Acerca de | Cruz Roja Radio'  },
+    data: { title: 'Acerca de | Humanitarian Consultants' },
     component: AboutComponent,
   }
 ];

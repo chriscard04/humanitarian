@@ -4,7 +4,7 @@ import {Settings} from './app.settings.model';
 @Injectable()
 export class AppSettings {
     public settings = new Settings(
-        'CruzRojaRadio',   //theme name
+        'HumanitarianConsultants',   //theme name
         true,       //loadingSpinner
         true,       //fixedHeader
         true,       //sidenavIsOpened
