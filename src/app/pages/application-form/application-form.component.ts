@@ -5,6 +5,9 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { WebApi } from '../../security/_services/service';
 import { GlobalFunctions } from '../../../shared/globalFunctions';
 import { Education } from '../../../shared/models/form-application'
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-application-form',
@@ -12,6 +15,9 @@ import { Education } from '../../../shared/models/form-application'
   styleUrls: ['./application-form.component.scss']
 })
 export class ApplicationFormComponent implements OnInit {
+  @ViewChild(MatAutocompleteTrigger, { static: false }) trigger: MatAutocompleteTrigger;
+
+
   public isUpdate: boolean = false;
   public row: any;
   public mainForm: FormGroup;
@@ -29,6 +35,8 @@ export class ApplicationFormComponent implements OnInit {
   showLoading = false;
   public perfiles = [];
   public personas = [];
+  public countries: Country[] = [];
+  public countries_filtered: Observable<Country[]>;
   public form_fields: any;
   public passportFile: File = null;
   public visaFile: File = null;
@@ -63,6 +71,8 @@ export class ApplicationFormComponent implements OnInit {
       "start_date": [new Date()],
       "questions": [null]
     });
+    this.countries = this.globalFunctions.getAllCountries();
+    this.mainForm.controls['preferred_location'].setValue(this.globalFunctions.getCountryByISO(this.service.getIPLocation()))
 
   }
 
@@ -75,6 +85,28 @@ export class ApplicationFormComponent implements OnInit {
     this.addThematicExperience();
     this.addConsultancies();
     this.addLanguages();
+
+    this.countries_filtered = this.mainForm.controls['preferred_location'].valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
+
+  ngAfterViewInit() {
+    //  this.settings.loadingSpinner = false;
+    // this.checkControlButtons();
+
+    this.trigger.panelClosingActions.subscribe(() => {
+      this.mainForm.controls['preferred_location'].setValue(this.trigger.activeOption.value);
+    });
+    
+  }
+
+
+  private _filter(value: string): Country[] {
+    const filterValue = value.toLowerCase();
+
+    return this.countries.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
   /* EDUCATION */
@@ -141,6 +173,7 @@ export class ApplicationFormComponent implements OnInit {
     return this.fb.group({
       c_years: [null, Validators.required],
       c_contributions: [null],
+      c_institution: [null]
     });
   }
   addConsultancies() {
@@ -187,6 +220,11 @@ export class ApplicationFormComponent implements OnInit {
 
       this.message = this.globalFunctions.errorMessage();
       this.showLoading = false;
+
+      setTimeout(() => {
+        this.message.show = false;
+      }, 3500);
+
       return;
     }
 
@@ -215,7 +253,7 @@ export class ApplicationFormComponent implements OnInit {
       setTimeout(() => {
         this.message.show = false;
         this.router.navigate(['home']);
-      }, 2000);
+      }, 3500);
 
       this.mainForm.reset();
       if (closeModal) {
@@ -224,7 +262,9 @@ export class ApplicationFormComponent implements OnInit {
     },
       error => {
         this.message = this.globalFunctions.errorMessage(error);
-
+        setTimeout(() => {
+          this.message.show = false;
+        }, 3500);
         this.showLoading = false;
       });
   }
@@ -238,11 +278,6 @@ export class ApplicationFormComponent implements OnInit {
     this.mainForm.controls['cod_perfil'].setValue(row.cod_perfil);
     this.mainForm.controls['email'].setValue(row.email);
     this.mainForm.controls['sn_activo'].setValue(row.sn_activo);
-  }
-
-  ngAfterViewInit() {
-    //  this.settings.loadingSpinner = false;
-    // this.checkControlButtons();
   }
 
   checkControlButtons() {
@@ -263,4 +298,9 @@ export class ApplicationFormComponent implements OnInit {
       this.nextRow = true;
     }
   }
+}
+
+interface Country {
+  name: string,
+  code: string
 }

@@ -21,8 +21,8 @@
       </div>
 
       <span class="spacer"></span>
-      <mat-form-field style="width: 100px; height: 95%; color: white;">
-        <mat-label>Language</mat-label>
+      <mat-form-field style="width: 100px; height:100%; background-color: white; color: red;" appearance="fill" color="warn">
+        <mat-label>{{'app.language' | translate}}</mat-label>
         <mat-select [(ngModel)]="selectedValue" (selectionChange)="useLanguage(selectedValue)">
           <mat-option [value]="option" *ngFor="let option of ['es','en']">{{ option }}</mat-option>
         </mat-select>

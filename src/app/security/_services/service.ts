@@ -17,6 +17,15 @@ export class WebApi {
     console.log("WebApi ")
   }
 
+  getIPLocation() {
+    let location = '';
+    this.http.get<any>("https://ipinfo.io/68.205.27.146?token=f30e4c9b9d0ebf").subscribe(ipinfo => {
+      location = ipinfo.country;
+    })
+    return location;
+  }
+
+
   Call(obj, params: string[], values: string[]): Observable<any> {
     var index = 0;
     var stringParams = '';

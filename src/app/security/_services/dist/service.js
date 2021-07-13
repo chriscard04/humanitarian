@@ -19,6 +19,13 @@ var WebApi = /** @class */ (function () {
         this.oCurrentUser = JSON.parse(this.localService.getJsonValue('currentUser'));
         console.log("WebApi ");
     }
+    WebApi.prototype.getIPLocation = function () {
+        var location = '';
+        this.http.get("https://ipinfo.io/68.205.27.146?token=f30e4c9b9d0ebf").subscribe(function (ipinfo) {
+            location = ipinfo.country;
+        });
+        return location;
+    };
     WebApi.prototype.Call = function (obj, params, values) {
         var index = 0;
         var stringParams = '';

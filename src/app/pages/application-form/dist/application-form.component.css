@@ -15,6 +15,10 @@ mat-card {
   padding: 8px !important;
 }
 
+mat-icon {
+  color: #f0741e;
+}
+
 .mat-footer-row,
 .mat-header-row,
 .mat-row {

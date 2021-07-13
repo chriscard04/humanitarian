@@ -14,8 +14,8 @@ var forms_1 = require("@angular/forms");
 // Translate
 var core_2 = require("@ngx-translate/core");
 // Additional components
-var material_carousel_1 = require("@ngmodule/material-carousel");
-var material_carousel_2 = require("@ngmodule/material-carousel");
+/* import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel'; */
 var core_3 = require("@angular/material/core");
 //Angular Material Components
 var checkbox_1 = require("@angular/material/checkbox");
@@ -54,6 +54,7 @@ var alert_dialog_component_1 = require("./alert_dialog/alert_dialog.component");
 var ngx_datatable_1 = require("@swimlane/ngx-datatable");
 // Google Chart
 var angular_google_charts_1 = require("angular-google-charts");
+var uppercase_directive_1 = require("././directives/uppercase.directive");
 var SharedModule = /** @class */ (function () {
     function SharedModule() {
     }
@@ -107,7 +108,7 @@ var SharedModule = /** @class */ (function () {
                 badge_1.MatBadgeModule,
                 ngx_datatable_1.NgxDatatableModule,
                 angular_google_charts_1.GoogleChartsModule,
-                material_carousel_1.MatCarouselModule,
+                // MatCarouselModule,
                 core_2.TranslateModule
             ],
             exports: [
@@ -149,13 +150,15 @@ var SharedModule = /** @class */ (function () {
                 confirmation_dialog_component_1.ConfirmationDialogComponent,
                 ngx_datatable_1.NgxDatatableModule,
                 angular_google_charts_1.GoogleChartsModule,
-                material_carousel_1.MatCarouselModule,
-                material_carousel_2.MatCarouselComponent,
-                core_2.TranslateModule
+                /*     MatCarouselModule,
+                    MatCarouselComponent, */
+                core_2.TranslateModule,
+                uppercase_directive_1.UppercaseDirective
             ],
             declarations: [
                 confirmation_dialog_component_1.ConfirmationDialogComponent,
                 alert_dialog_component_1.AlertDialogComponent,
+                uppercase_directive_1.UppercaseDirective
             ],
             entryComponents: [
                 alert_dialog_component_1.AlertDialogComponent,

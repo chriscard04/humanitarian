@@ -9,6 +9,8 @@ exports.__esModule = true;
 exports.ApplicationFormComponent = void 0;
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
+var operators_1 = require("rxjs/operators");
+var autocomplete_1 = require("@angular/material/autocomplete");
 var ApplicationFormComponent = /** @class */ (function () {
     function ApplicationFormComponent(fb, router, dialog, service, globalFunctions) {
         this.fb = fb;
@@ -29,6 +31,7 @@ var ApplicationFormComponent = /** @class */ (function () {
         this.showLoading = false;
         this.perfiles = [];
         this.personas = [];
+        this.countries = [];
         this.passportFile = null;
         this.visaFile = null;
         this.pictureFile = null;
@@ -52,8 +55,11 @@ var ApplicationFormComponent = /** @class */ (function () {
             "start_date": [new Date()],
             "questions": [null]
         });
+        this.countries = this.globalFunctions.getAllCountries();
+        this.mainForm.controls['preferred_location'].setValue(this.globalFunctions.getCountryByISO(this.service.getIPLocation()));
     }
     ApplicationFormComponent.prototype.ngOnInit = function () {
+        var _this = this;
         /*     this.service.Get('perfiles').subscribe((result) => {
           this.perfiles = result;
         }); */
@@ -62,6 +68,19 @@ var ApplicationFormComponent = /** @class */ (function () {
         this.addThematicExperience();
         this.addConsultancies();
         this.addLanguages();
+        this.countries_filtered = this.mainForm.controls['preferred_location'].valueChanges.pipe(operators_1.startWith(''), operators_1.map(function (value) { return _this._filter(value); }));
+    };
+    ApplicationFormComponent.prototype.ngAfterViewInit = function () {
+        //  this.settings.loadingSpinner = false;
+        // this.checkControlButtons();
+        var _this = this;
+        this.trigger.panelClosingActions.subscribe(function () {
+            _this.mainForm.controls['preferred_location'].setValue(_this.trigger.activeOption.value);
+        });
+    };
+    ApplicationFormComponent.prototype._filter = function (value) {
+        var filterValue = value.toLowerCase();
+        return this.countries.filter(function (option) { return option.name.toLowerCase().includes(filterValue); });
     };
     /* EDUCATION */
     ApplicationFormComponent.prototype.education = function () {
@@ -123,7 +142,8 @@ var ApplicationFormComponent = /** @class */ (function () {
     ApplicationFormComponent.prototype.newConsultancy = function () {
         return this.fb.group({
             c_years: [null, forms_1.Validators.required],
-            c_contributions: [null]
+            c_contributions: [null],
+            c_institution: [null]
         });
     };
     ApplicationFormComponent.prototype.addConsultancies = function () {
@@ -164,6 +184,9 @@ var ApplicationFormComponent = /** @class */ (function () {
             this.globalFunctions.validateAllFormFields(this.mainForm);
             this.message = this.globalFunctions.errorMessage();
             this.showLoading = false;
+            setTimeout(function () {
+                _this.message.show = false;
+            }, 3500);
             return;
         }
         var formData = new FormData();
@@ -185,13 +208,16 @@ var ApplicationFormComponent = /** @class */ (function () {
             setTimeout(function () {
                 _this.message.show = false;
                 _this.router.navigate(['home']);
-            }, 2000);
+            }, 3500);
             _this.mainForm.reset();
             if (closeModal) {
                 // this.dialogRef.close(this.data);
             }
         }, function (error) {
             _this.message = _this.globalFunctions.errorMessage(error);
+            setTimeout(function () {
+                _this.message.show = false;
+            }, 3500);
             _this.showLoading = false;
         });
     };
@@ -202,10 +228,6 @@ var ApplicationFormComponent = /** @class */ (function () {
         this.mainForm.controls['cod_perfil'].setValue(row.cod_perfil);
         this.mainForm.controls['email'].setValue(row.email);
         this.mainForm.controls['sn_activo'].setValue(row.sn_activo);
-    };
-    ApplicationFormComponent.prototype.ngAfterViewInit = function () {
-        //  this.settings.loadingSpinner = false;
-        // this.checkControlButtons();
     };
     ApplicationFormComponent.prototype.checkControlButtons = function () {
         // ACTIVAR O DESACTIVAR BOTONES ATRAS Y SIGUIENTE
@@ -228,6 +250,9 @@ var ApplicationFormComponent = /** @class */ (function () {
             this.nextRow = true;
         }
     };
+    __decorate([
+        core_1.ViewChild(autocomplete_1.MatAutocompleteTrigger, { static: false })
+    ], ApplicationFormComponent.prototype, "trigger");
     ApplicationFormComponent = __decorate([
         core_1.Component({
             selector: 'app-application-form',

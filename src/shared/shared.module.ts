@@ -51,6 +51,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // Google Chart
 import { GoogleChartsModule } from 'angular-google-charts';
 
+import { UppercaseDirective } from "././directives/uppercase.directive";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -137,11 +139,14 @@ import { GoogleChartsModule } from 'angular-google-charts';
     GoogleChartsModule,
     /*     MatCarouselModule,
         MatCarouselComponent, */
-    TranslateModule
+    TranslateModule,
+    UppercaseDirective
   ],
   declarations: [
     ConfirmationDialogComponent,
     AlertDialogComponent,
+    UppercaseDirective
+
   ],
   entryComponents: [
     AlertDialogComponent,
