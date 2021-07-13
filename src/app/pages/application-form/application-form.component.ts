@@ -99,7 +99,7 @@ export class ApplicationFormComponent implements OnInit {
     this.trigger.panelClosingActions.subscribe(() => {
       this.mainForm.controls['preferred_location'].setValue(this.trigger.activeOption.value);
     });
-    
+
   }
 
 

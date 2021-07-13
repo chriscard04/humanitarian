@@ -15,7 +15,8 @@
 		"select_file": "Seleccionar Archivo",
 		"send": "Enviar",
 		"yes": "Sí",
-		"language": "Language"
+		"language": "Language",
+		"wait": "Por favor espere, estamos guardando su información..."
 	},
 	"hc": {
 		"address": "Dirección Actual",

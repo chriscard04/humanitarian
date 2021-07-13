@@ -15,7 +15,8 @@
 		"select_file": "Select File",
 		"send": "Send",
 		"yes": "Yes",
-		"language": "Idioma"
+		"language": "Idioma",
+		"wait": "Please wait, we're saving your data..."
 	},
 	"hc": {
 		"address": "Current Address",

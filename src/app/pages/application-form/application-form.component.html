@@ -464,7 +464,11 @@
         </div>
       </form>
     </mat-card-content>
-    <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
+    <mat-card class="my-accent" *ngIf="showLoading" align="center">
+      <b>{{'app.wait' | translate}}</b>
+    </mat-card>
+    <br>
+    <mat-progress-bar mode="query" *ngIf="showLoading"></mat-progress-bar>
 
     <mat-card [class.my-primary]="message.status=='primary'" [class.my-accent]="message.status=='accent'"
       [class.my-warn]="message.status=='warn'" *ngIf="message.show">
